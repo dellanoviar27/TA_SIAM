@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    SiSordu | Daftar Kelas
+    SiSordu | Daftar Mata Pelajaran
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="mb-5 position-relative">
-                    <h4 class="card-title mb-0">Daftar Kelas</h4>
+                    <h4 class="card-title mb-0">Daftar Mata Pelajaran</h4>
                     <a href="/admin/classes/create" class="btn btn-primary position-absolute top-0 end-0">Tambah Kelas</a>
                 </div>
                 <p class="card-subtitle mb-3">
@@ -26,25 +26,26 @@
                             <!-- start row -->
                             <tr>
                                 <th width="10%">No</th>
-                                <th>Tingkatan</th>
-                                <th>Huruf</th>
-                                <th>Wali Kelas</th>
-                                <th>Aksi</th>
+                                <th>Nama Mata Pelajaran</th>
+                                <th>Kode</th>
+                                <th>KKM</th>
+                                <th>Semester</th>
                             </tr>
                             <!-- end row -->
                         </thead>
                         <tbody>
                             <!-- start row -->
-                            @foreach ($classes as $no=>$Classes)
+                            @foreach ($subject as $no=>$Subject)
                             <tr>
                                 
                                 <td>{{$no+1}}</td>
-                                <td>{{$Classes->cls_level}}</td>
-                                <td>{{$Classes->cls_letter}}</td>
-                                <td>{{$Classes->cls_homeroom}}</td>
+                                <td>{{$Subject->sbj_name_subject}}</td>
+                                <td>{{$Subject->sbj_code}}</td>
+                                <td>{{$Subject->sbj_kkm}}</td>
+                                <td>{{$Subject->sbj_semester}}</td>
                                 <td>
-                                     <a href="/admin/classes/{{$Classes->cls_id}}/edit" class="btn btn-primary">Edit</a>
-                                     <a href="/admin/classes/{{$Classes->cls_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
+                                     <a href="/admin/classes/{{$Subject->sbj_id}}/edit" class="btn btn-primary">Edit</a>
+                                     <a href="/admin/classes/{{$Subject->sbj_id}}/destroy" class="btn btn-danger">Delete</a>
 
                                 </td>
 
@@ -61,10 +62,10 @@
 
                             <tr>
                                 <th width="10%">No</th>
-                                <th>Tingkatan</th>
-                                <th>Huruf</th>
-                                <th>Wali Kelas</th>  
-                                <th>Aksi</th>
+                                <th>Nama Mata Pelajaran</th>
+                                <th>Kode</th>
+                                <th>KKM</th>
+                                <th>Semester</th>
                             </tr>
                             <!-- end row -->
                         </tfoot>

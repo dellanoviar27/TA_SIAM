@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\subject;
 use Illuminate\Http\Request;
+Use Alert;
 
 class SubjectController extends Controller
 {
@@ -12,7 +13,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        $subject = Subject::all();
+        return view ('admin.subject.index', compact(['subject']));
     }
 
     /**
@@ -20,7 +22,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.subject.create');
     }
 
     /**

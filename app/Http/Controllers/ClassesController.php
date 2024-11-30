@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Classes;
 use Illuminate\Http\Request;
+Use Alert;
+
 
 class ClassesController extends Controller
 {
@@ -14,6 +16,10 @@ class ClassesController extends Controller
     {
         $classes = Classes::all();
         // dd($classes);
+        $title = 'Hapus Kelas!';
+        $text = "Kelas Tidak Bisa Kembali Jika Dihapus";
+        confirmDelete($title, $text);
+        // return view('users.index', compact('users'));
         return view ('admin.classes.index', compact(['classes']));
     }
 
@@ -38,6 +44,7 @@ class ClassesController extends Controller
             // 'cls_homeroom'    =>  $request->cls_homeroom
         ]);
 
+        Alert::success('Berhasil Menambahkan', 'Kelas Berhasil Ditambahkan');
         return redirect('/admin/classes');
     }
 
@@ -54,7 +61,8 @@ class ClassesController extends Controller
      */
     public function edit(Classes $Classes, $id)
     {
-        $Classes = Classes::findOrFail($id) -> first();
+        $Classes = Classes::findOrFail($id);
+        // dd($Classes);
         return view ('admin.classes.edit', compact(['Classes']));
     }
 
@@ -69,6 +77,8 @@ class ClassesController extends Controller
         $updateClasses-> cls_letter = $request -> cls_letter;
         $updateClasses-> cls_homeroom = $request -> cls_homeroom;
         $updateClasses->save();
+
+        Alert::success('Berhasil Mengedit', 'Kelas Berhasil Diedit');
         return redirect('/admin/classes');
     }
 
@@ -80,6 +90,8 @@ class ClassesController extends Controller
         $destroyClasses = Classes::findOrFail($id);
         // dd ($destroyClasses);
         $destroyClasses->delete();
+
+        Alert::success('Berhasil Menghapus', 'Kelas Berhasil Dihapus');
         return redirect('/admin/classes');
     }
 }

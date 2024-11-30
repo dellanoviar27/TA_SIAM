@@ -381,6 +381,8 @@
   </div>
   <div class="dark-transparent sidebartoggler"></div>
   {{-- script --}}
+  @include('sweetalert::alert')
+
 
   @include('admin.script')
   
