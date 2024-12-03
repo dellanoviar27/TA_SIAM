@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('pdb_name');
             $table->string('pdb_nis');
             $table->string('pdb_nisn');
-            $table->unsignedBigInteger('pdb_class_id');
+            // $table->unsignedBigInteger('pdb_class_id');
             $table->string('pdb_gender');
             $table->string('pdb_place_of_birth');
             $table->timestamp('pdb_date_of_birth');
@@ -39,7 +39,7 @@ return new class extends Migration
             $table->foreign('pdb_created_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('pdb_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('pdb_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
-            $table->foreign('pdb_class_id')->references('cls_id')->on('classes')->onDelete('cascade');
+            // $table->foreign('pdb_class_id')->references('cls_id')->on('classes')->onDelete('cascade');
         });
     }
 

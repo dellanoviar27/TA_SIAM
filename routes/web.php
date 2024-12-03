@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PpdbController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ClassesController;
+use App\Http\Controllers\ScheduleController;
 
 
 Route::get('/', function () {
@@ -46,3 +48,11 @@ Route::post('/admin/subject/create', [SubjectController::Class, 'store'])->name(
 Route::get('/admin/subject/{id}/edit', [SubjectController::Class, 'edit'])->name('admin.subject.edit');
 Route::post('/admin/subject/{id}/edit', [SubjectController::Class, 'update'])->name('admin.subject.edit');
 Route::delete('/admin/subject/{id}/destroy', [SubjectController::Class, 'destroy'])->name('admin.subject.destroy');
+
+//admin. schedule
+Route::get('/admin/schedule', [ScheduleController::Class, 'index'])->name('admin.schedulet');
+Route::get('/admin/schedule/create', [ScheduleController::Class, 'create'])->name('admin.schedule.create');
+Route::post('/admin/schedule/create', [ScheduleController::Class, 'store'])->name('admin.schedule.store');
+Route::get('/admin/schedule/{id}/edit', [ScheduleController::Class, 'edit'])->name('admin.schedulet.edit');
+Route::post('/admin/schedulet/{id}/edit', [ScheduleController::Class, 'update'])->name('admin.schedule.edit');
+Route::delete('/admin/schedulet/{id}/destroy', [ScheduleController::Class, 'destroy'])->name('admin.schedule.destroy');

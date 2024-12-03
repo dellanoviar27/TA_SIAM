@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('sbj_semester');
             $table->timestamps();
 
+            $table->renameColumn('updated_at', 'sbj_updated_at');
+            $table->renameColumn('created_at', 'sbj_created_at');
+
             $table->unsignedBigInteger('sbj_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('sbj_deleted_by')->unsigned()->nullable();
             $table->unsignedBigInteger('sbj_updated_by')->unsigned()->nullable();

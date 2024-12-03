@@ -297,7 +297,7 @@
               <span class="hide-menu">AKADEMIK</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./main/page-pricing.html" aria-expanded="false">
+              <a class="sidebar-link" href="/admin/subject" aria-expanded="false">
                 <span>
                   <i class="ti ti-book"></i>
                 </span>
@@ -305,7 +305,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./main/page-faq.html" aria-expanded="false">
+              <a class="sidebar-link" href="/admin/schedule" aria-expanded="false">
                 <span>
                   <i class="ti ti-calendar-stats"></i>
                 </span>

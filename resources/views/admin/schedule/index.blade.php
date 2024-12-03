@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    SiSordu | Daftar Mata Pelajaran
+    SiSordu | Daftar Jadwal Pelajaran
 @endsection
 
 @section('content')
@@ -14,8 +14,8 @@
         <div class="card">
             <div class="card-body">
                 <div class="mb-5 position-relative">
-                    <h4 class="card-title mb-0">Daftar Mata Pelajaran</h4>
-                    <a href="/admin/subject/create" class="btn btn-primary position-absolute top-0 end-0">Tambah Pelajaran</a>
+                    <h4 class="card-title mb-0">Daftar Jadwal Pelajaran</h4>
+                    <a href="/admin/schedule/create" class="btn btn-primary position-absolute top-0 end-0">Tambah Jadwal</a>
                 </div>
                 <p class="card-subtitle mb-3">
                     
@@ -26,10 +26,12 @@
                             <!-- start row -->
                             <tr>
                                 <th width="10%">No</th>
-                                <th>Nama Mata Pelajaran</th>
-                                <th>Kode</th>
-                                <th>KKM</th>
-                                <th>Semester</th>
+                                <th>Hari</th>
+                                <th>Kelas</th>
+                                <th>Mata Pelajaran</th>
+                                <th>Guru</th>
+                                <th>Jam Mulai</th>
+                                <th>Jam Selesai</th>
                                 <th>Aksi</th>
 
                             </tr>
@@ -37,17 +39,19 @@
                         </thead>
                         <tbody>
                             <!-- start row -->
-                            @foreach ($Subject as $no=>$Subject)
+                            @foreach ($schedule as $no=>$Schedule)
                             <tr>
                                 
                                 <td>{{$no+1}}</td>
-                                <td>{{$Subject->sbj_name_subject}}</td>
-                                <td>{{$Subject->sbj_code}}</td>
-                                <td>{{$Subject->sbj_kkm}}</td>
-                                <td>{{$Subject->sbj_semester}}</td>
+                                <td>{{$Schedule->sch_day}}</td>
+                                <td>{{$Schedule->sch_class_id}}</td>
+                                <td>{{$Schedule->sch_subject_id}}</td>
+                                <td>{{$Schedule->sch_teacher_id}}</td>
+                                <td>{{$Schedule->sch_start_time}}</td>
+                                <td>{{$Schedule->sch_end_time}}</td>
                                 <td>
-                                     <a href="/admin/subject/{{$Subject->sbj_id}}/edit" class="btn btn-primary">Edit</a>
-                                     <a href="/admin/subject/{{$Subject->sbj_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
+                                     <a href="/admin/schedule/{{$Schedulet->sch_id}}/edit" class="btn btn-primary">Edit</a>
+                                     <a href="/admin/schedule/{{$Schedule->sch_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
 
                                 </td>
 
@@ -64,10 +68,12 @@
 
                             <tr>
                                 <th width="10%">No</th>
-                                <th>Nama Mata Pelajaran</th>
-                                <th>Kode</th>
-                                <th>KKM</th>
-                                <th>Semester</th>
+                                <th>Hari</th>
+                                <th>Kelas</th>
+                                <th>Mata Pelajaran</th>
+                                <th>Guru</th>
+                                <th>Jam Mulai</th>
+                                <th>Jam Selesai</th>
                                 <th>Aksi</th>
                             </tr>
                             <!-- end row -->

@@ -4,15 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\student;
 use Illuminate\Http\Request;
+Use Alert;
 
 class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
-        //
+        $Subject = Subject::all();
+        
+        $title = 'Hapus Pelajaran!';
+        $text = "Mata Pelajaran Tidak Bisa Kembali Jika Dihapus";
+        confirmDelete($title, $text);
+        // return view('users.index', compact('users'));
+        return view ('admin.subject.index', compact(['subject']));
     }
 
     /**
@@ -20,7 +28,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.subject.create');
     }
 
     /**
@@ -28,7 +36,15 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $createClasses = Classes::create([
+            'sbj_name_subject'    =>  $request->sbj_name_subject,
+            'sbj_code'            =>  $request->sbj_code,
+            'sbj_kkm'             =>  $request->sbj_kkm,
+            'sbj_semester'        =>  $request->sbj_semester,
+        ]);
+
+        Alert::success('Berhasil Menambahkan', 'Mata Pelajaran Berhasil Ditambahkan');
+        return redirect('/admin/subject');
     }
 
     /**

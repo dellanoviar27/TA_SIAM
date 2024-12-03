@@ -17,7 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('sch_class_id');
             $table->unsignedBigInteger('sch_subject_id');
             $table->unsignedBigInteger('sch_teacher_id');
-            $table->timestamp('sch_time');
+            $table->timestamp('sch_start_time');
+            $table->timestamp('sch_end_time');
             $table->timestamps();
 
             $table->unsignedBigInteger('sch_created_by')->unsigned()->nullable();
@@ -31,9 +32,9 @@ return new class extends Migration
             $table->foreign('sch_created_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('sch_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('sch_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
-            $table->foreign('sch_class_id')->references('cls_id')->on('classes')->onDelete('cascade');
-            $table->foreign('sch_subject_id')->references('sbj_id')->on('subjects')->onDelete('cascade');
-            $table->foreign('sch_teacher_id')->references('tch_id')->on('teachers')->onDelete('cascade');
+            // $table->foreign('sch_class_id')->references('cls_id')->on('classes')->onDelete('cascade');
+            // $table->foreign('sch_subject_id')->references('sbj_id')->on('subjects')->onDelete('cascade');
+            // $table->foreign('sch_teacher_id')->references('tch_id')->on('teachers')->onDelete('cascade');
         });
     }
 

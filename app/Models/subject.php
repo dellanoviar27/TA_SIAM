@@ -3,8 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class subject extends Model
+class Subject extends Model
 {
-    //
+    use HasFactory, SoftDeletes ;
+    protected $primaryKey = 'sbj_id';
+    protected $guarded = [];
+
+    const CREATED_AT = 'sbj_created_at';
+    const UPDATED_AT = 'sbj_updated_at';
+    const DELETED_AT = 'sbj_deleted_at';
 }
