@@ -14,12 +14,17 @@ return new class extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->bigIncrements('sch_id');
             $table->string('sch_day');
-            $table->unsignedBigInteger('sch_class_id');
-            $table->unsignedBigInteger('sch_subject_id');
-            $table->unsignedBigInteger('sch_teacher_id');
-            $table->timestamp('sch_start_time');
-            $table->timestamp('sch_end_time');
+            $table->unsignedBiginteger('sch_class_id');
+            $table->unsignedBiginteger('sch_subject_id');
+            $table->unsignedBiginteger('sch_teacher_id');
+            $table->unsignedBiginteger('sch_semester_id');
+            $table->time('sch_start_time');
+            $table->time('sch_end_time');
+          
             $table->timestamps();
+
+            $table->renameColumn('updated_at', 'sch_updated_at');
+            $table->renameColumn('created_at', 'sch_created_at');
 
             $table->unsignedBigInteger('sch_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('sch_deleted_by')->unsigned()->nullable();
@@ -32,9 +37,10 @@ return new class extends Migration
             $table->foreign('sch_created_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('sch_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('sch_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
-            // $table->foreign('sch_class_id')->references('cls_id')->on('classes')->onDelete('cascade');
-            // $table->foreign('sch_subject_id')->references('sbj_id')->on('subjects')->onDelete('cascade');
-            // $table->foreign('sch_teacher_id')->references('tch_id')->on('teachers')->onDelete('cascade');
+            $table->foreign('sch_class_id')->references('cls_id')->on('classes')->onDelete('cascade');
+            $table->foreign('sch_subject_id')->references('sbj_id')->on('subjects')->onDelete('cascade');
+            $table->foreign('sch_teacher_id')->references('tch_id')->on('teachers')->onDelete('cascade');
+            $table->foreign('sch_semester_id')->references('smt_id')->on('semesters')->onDelete('cascade');
         });
     }
 

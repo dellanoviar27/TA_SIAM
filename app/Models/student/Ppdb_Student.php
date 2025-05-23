@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\student;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class student extends Model
+class Ppdb_Student extends Model
 {
     use HasFactory, SoftDeletes ;
     protected $table = 'students';
@@ -16,4 +16,9 @@ class student extends Model
     const CREATED_AT = 'std_created_at';
     const UPDATED_AT = 'std_updated_at';
     const DELETED_AT = 'std_deleted_at';
+
+    public function classes()
+    {
+        return $this->belongsTo(classes::class, 'std_class_id', 'cls_id');
+    }
 }

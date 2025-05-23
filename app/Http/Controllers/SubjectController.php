@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subject;
+use App\Models\semester;
 use Illuminate\Http\Request;
 Use Alert;
 
@@ -18,8 +19,8 @@ class SubjectController extends Controller
         $title = 'Hapus Pelajaran!';
         $text = "Mata Pelajaran Tidak Bisa Kembali Jika Dihapus";
         confirmDelete($title, $text);
-        // return view('users.index', compact('users'));
-        return view ('admin.subject.index', compact(['Subject']));
+        
+        return view ('staff.subject.index', compact(['Subject']));
     }
 
     /**
@@ -27,7 +28,8 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        return view ('admin.subject.create');
+        $Semester = Semester::all();
+        return view ('staff.subject.create', compact('Semester'));
     }
 
     /**
@@ -36,14 +38,14 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         $createSubject = Subject::create([
-            'sbj_name_subject'    =>  $request->sbj_name_subject,
             'sbj_code'            =>  $request->sbj_code,
+            'sbj_name'            =>  $request->sbj_name,
             'sbj_kkm'             =>  $request->sbj_kkm,
-            'sbj_semester'        =>  $request->sbj_semester,
+            'sbj_semester_id'     =>  $request->smt_id,
         ]);
 
         Alert::success('Berhasil Menambahkan', 'Mata Pelajaran Berhasil Ditambahkan');
-        return redirect('/admin/subject');
+        return redirect('/staff/subject');
     }
 
     /**
@@ -60,7 +62,9 @@ class SubjectController extends Controller
     public function edit(subject $subject, $id)
     {
         $Subject = Subject::findOrFail($id);
-        return view ('admin.subject.edit', compact(['Subject']));
+        $Semester = Semester::all();
+        // dd($Semester);
+        return view ('staff.subject.edit', compact(['Subject', 'Semester']));
     }
 
     /**
@@ -70,14 +74,14 @@ class SubjectController extends Controller
     {
         $updateSubject = Subject::findOrFail($id);
        
-        $updateSubject-> sbj_name_subject   = $request -> sbj_name_subject;
         $updateSubject-> sbj_code           = $request -> sbj_code;
+        $updateSubject-> sbj_name           = $request -> sbj_name;
         $updateSubject-> sbj_kkm            = $request -> sbj_kkm;
-        $updateSubject-> sbj_semester       = $request -> sbj_semester;
+        $updateSubject-> sbj_semester_id    = $request -> smt_id;
         $updateSubject->save();
 
         Alert::success('Berhasil Mengedit', 'Mata Pelajaran Berhasil Diedit');
-        return redirect('/admin/subject');
+        return redirect('/staff/subject');
     }
 
     /**
@@ -90,6 +94,6 @@ class SubjectController extends Controller
         $destroySubject->delete();
 
         Alert::success('Berhasil Menghapus', 'Mata Pelajaran Berhasil Dihapus');
-        return redirect('/admin/subject');
+        return redirect('/staff/subject');
     }
 }

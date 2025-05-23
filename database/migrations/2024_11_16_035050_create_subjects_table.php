@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->bigIncrements('sbj_id');
-            $table->string('sbj_name_subject');
             $table->string('sbj_code');
+            $table->string('sbj_name');
             $table->string('sbj_kkm');
-            $table->string('sbj_semester');
+            $table->unsignedBiginteger('sbj_semester_id');
             $table->timestamps();
 
             $table->renameColumn('updated_at', 'sbj_updated_at');
@@ -33,6 +33,7 @@ return new class extends Migration
             $table->foreign('sbj_created_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('sbj_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('sbj_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->foreign('sbj_semester_id')->references('smt_id')->on('semesters')->onDelete('cascade');
            
         });
     }

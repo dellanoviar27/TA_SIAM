@@ -13,20 +13,24 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->bigIncrements('tch_id');
+            $table->string('tch_nik');
             $table->string('tch_name');
-            $table->string('tch_nip');
             $table->string('tch_gender');
             $table->string('tch_place_of_birth');
-            $table->timestamp('tch_date_of_birth');
-            $table->string('tch_religion');
-            $table->BigInteger('tch_phone');
-            $table->string('tch_subject');
-            $table->unsignedBigInteger('tch_classes_id');
-            $table->string('tch_group');
-            $table->string('tch_position');
+            $table->date('tch_date_of_birth');
             $table->string('tch_address');
+            $table->BigInteger('tch_phone');
+            $table->string('tch_email');
+            $table->string('tch_last_education');
+            $table->string('tch_current_education');
+            $table->string('tch_name_institution');
+            $table->string('tch_main_task');
+            $table->string('tch_additional_task');
+            $table->string('tch_pictures');
             $table->timestamps();
 
+            $table->renameColumn('updated_at', 'tch_updated_at');
+            $table->renameColumn('created_at', 'tch_created_at');
             $table->unsignedBigInteger('tch_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('tch_deleted_by')->unsigned()->nullable();
             $table->unsignedBigInteger('tch_updated_by')->unsigned()->nullable();
@@ -38,7 +42,6 @@ return new class extends Migration
             $table->foreign('tch_created_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('tch_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('tch_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
-            $table->foreign('tch_classes_id')->references('cls_id')->on('classes')->onDelete('cascade');
         });
     }
 

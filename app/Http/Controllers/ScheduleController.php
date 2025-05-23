@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Schedule;
+use App\Models\Subject;
+use App\Models\classes;
+use App\Models\Teacher;
+use App\Models\semester;
 use Illuminate\Http\Request;
 Use Alert;
 
@@ -19,7 +23,7 @@ class ScheduleController extends Controller
         $text = "Jadwal Tidak Bisa Kembali Jika Dihapus";
         confirmDelete($title, $text);
        
-        return view ('admin.schedule.index', compact(['schedule']));
+        return view ('staff.schedule.index', compact(['schedule']));
     }
 
     /**
@@ -27,7 +31,12 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        return view ('admin.schedule.create');
+        $Subject = Subject::all();
+        $classes = Classes::all();
+        $teacher = Teacher::all();
+        $semester = Semester::all();
+        // dd($semester);
+        return view ('staff.schedule.create', compact('Subject', 'classes', 'teacher', 'semester'));
     }
 
     /**
@@ -37,15 +46,17 @@ class ScheduleController extends Controller
     {
         $createSchedule = Schedule::create([
             'sch_day'           =>  $request->sch_day,
-            'sch_class_id'      =>  $request->sch_class_id,
-            'sch_subject_id'    =>  $request->sch_subject_id,
-            'sch_teacher_id'    =>  $request->sch_teacher_id,
+            'sch_class_id'      =>  $request->cls_id,
+            'sch_subject_id'    =>  $request->sbj_id,
+            'sch_teacher_id'    =>  $request->tch_id,
+            'sch_semester_id'   =>  $request->smt_id,
             'sch_start_time'    =>  $request->sch_start_time,
             'sch_end_time'      =>  $request->sch_end_time,
+
         ]);
 
         Alert::success('Berhasil Menambahkan', 'Jadwal Berhasil Ditambahkan');
-        return redirect('/admin/schedule');
+        return redirect('/staff/schedule');
     }
 
     /**
@@ -61,9 +72,12 @@ class ScheduleController extends Controller
      */
     public function edit(schedule $schedule, $id)
     {
-        $Schedule = Schedule::findOrFail($id);
-      
-        return view ('admin.schedule.edit', compact(['schedule']));
+        $editSchedule = Schedule::findOrFail($id);
+        $classes = Classes::all();
+        $Subject = Subject::all();
+        $teacher = Teacher::all();
+        $semester = Semester::all();
+        return view ('staff.schedule.edit', compact(['editSchedule', 'classes', 'Subject', 'teacher', 'semester']));
     }
 
     /**
@@ -72,16 +86,17 @@ class ScheduleController extends Controller
     public function update(Request $request, schedule $schedule, $id)
     {
         $updateSchedule = Schedule::findOrFail($id);
-        $updateSchedule-> sch_day        = $request -> sch_day;
-        $updateSchedule-> sch_class_id   = $request -> sch_class_id;
-        $updateSchedule-> sch_subject_id = $request -> sch_subject_id;
-        $updateSchedule-> sch_teacher_id = $request -> sch_teacher_id;
-        $updateSchedule-> sch_start_time = $request -> sch_start_time;
-        $updateSchedule-> sch_end_time   = $request -> sch_end_time;
+        $updateSchedule-> sch_day         = $request -> sch_day;
+        $updateSchedule-> sch_class_id    = $request -> cls_id;
+        $updateSchedule-> sch_subject_id  = $request -> sbj_id;
+        $updateSchedule-> sch_teacher_id  = $request -> tch_id;
+        $updateSchedule-> sch_semester_id = $request -> smt_id;
+        $updateSchedule-> sch_start_time  = $request -> sch_start_time;
+        $updateSchedule-> sch_end_time    = $request -> sch_end_time;
         $updateSchedule->save();
 
         Alert::success('Berhasil Mengedit', 'Jadwal Berhasil Diedit');
-        return redirect('/admin/shedule');
+        return redirect('/staff/schedule');
     }
 
     /**
@@ -90,10 +105,9 @@ class ScheduleController extends Controller
     public function destroy(schedule $schedule, $id)
     {
         $destroySchedule = Schedule::findOrFail($id);
-        // dd ($destroyClasses);
         $destroySchedule->delete();
 
         Alert::success('Berhasil Menghapus', 'Jadwal Berhasil Dihapus');
-        return redirect('/admin/schedule');
+        return redirect('/staff/schedule');
     }
 }

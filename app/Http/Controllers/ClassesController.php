@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 Use Alert;
 
 
+
 class ClassesController extends Controller
 {
     /**
@@ -15,12 +16,10 @@ class ClassesController extends Controller
     public function index()
     {
         $classes = Classes::all();
-        // dd($classes);
         $title = 'Hapus Kelas!';
         $text = "Kelas Tidak Bisa Kembali Jika Dihapus";
         confirmDelete($title, $text);
-        // return view('users.index', compact('users'));
-        return view ('admin.classes.index', compact(['classes']));
+        return view ('staff.classes.index', compact(['classes']));
     }
 
     /**
@@ -28,7 +27,7 @@ class ClassesController extends Controller
      */
     public function create()
     {
-        return view ('admin.classes.create');
+        return view ('staff.classes.create');
     }
 
     /**
@@ -39,13 +38,13 @@ class ClassesController extends Controller
         // dd($request);
 
         $createClasses = Classes::create([
-            'cls_level'    =>  $request->cls_level,
-            'cls_letter'    =>  $request->cls_letter,
-            // 'cls_homeroom'    =>  $request->cls_homeroom
+            'cls_level'         =>  $request->cls_level,
+            'cls_number'        =>  $request->cls_number,
+            'cls_general_level' =>  $request->cls_general_level,
         ]);
 
         Alert::success('Berhasil Menambahkan', 'Kelas Berhasil Ditambahkan');
-        return redirect('/admin/classes');
+        return redirect('/staff/classes');
     }
 
     /**
@@ -62,8 +61,7 @@ class ClassesController extends Controller
     public function edit(Classes $Classes, $id)
     {
         $Classes = Classes::findOrFail($id);
-        // dd($Classes);
-        return view ('admin.classes.edit', compact(['Classes']));
+        return view ('staff.classes.edit', compact(['Classes']));
     }
 
     /**
@@ -72,14 +70,13 @@ class ClassesController extends Controller
     public function update(Request $request, Classes $Classes, $id)
     {
         $updateClasses = Classes::findOrFail($id);
-        // dd ($destroyClasses);
-        $updateClasses-> cls_level = $request -> cls_level;
-        $updateClasses-> cls_letter = $request -> cls_letter;
-        $updateClasses-> cls_homeroom = $request -> cls_homeroom;
+        $updateClasses-> cls_level          = $request -> cls_level;
+        $updateClasses-> cls_number         = $request -> cls_number;
+        $updateClasses-> cls_general_level  = $request -> cls_general_level;
         $updateClasses->save();
 
         Alert::success('Berhasil Mengedit', 'Kelas Berhasil Diedit');
-        return redirect('/admin/classes');
+        return redirect('/staff/classes');
     }
 
     /**
@@ -88,10 +85,9 @@ class ClassesController extends Controller
     public function destroy(Classes $Classes, $id)
     {
         $destroyClasses = Classes::findOrFail($id);
-        // dd ($destroyClasses);
         $destroyClasses->delete();
 
         Alert::success('Berhasil Menghapus', 'Kelas Berhasil Dihapus');
-        return redirect('/admin/classes');
+        return redirect('/staff/classes');
     }
 }

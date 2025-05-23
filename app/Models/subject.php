@@ -9,10 +9,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Subject extends Model
 {
     use HasFactory, SoftDeletes ;
+    protected $table = 'subjects';
     protected $primaryKey = 'sbj_id';
     protected $guarded = [];
 
     const CREATED_AT = 'sbj_created_at';
     const UPDATED_AT = 'sbj_updated_at';
     const DELETED_AT = 'sbj_deleted_at';
+
+    public function semester()
+{
+    return $this->belongsTo(Semester::class, 'sbj_semester_id', 'smt_id');
+}
+
 }
