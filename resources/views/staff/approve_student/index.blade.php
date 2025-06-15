@@ -15,74 +15,59 @@
             <div class="card-body">
                 <div class="mb-5 position-relative">
                     <h4 class="card-title mb-0">Daftar Calon Siswa Baru</h4>
-                    {{-- <a href="/staff/approve_student/create" class="btn btn-primary position-absolute top-0 end-0">Tambah Kelas</a> --}}
                 </div>
-                <p class="card-subtitle mb-3">
-                    
-                </p>
+
                 <div class="table-responsive">
                     <table id="file_export" class="table w-100 table-striped table-bordered display text-nowrap">
                         <thead>
-                            <!-- start row -->
                             <tr>
-                                <th width="10%">No</th>
+                                <th width="5%">No</th>
                                 <th>Nama</th>
                                 <th>NISN</th>
                                 <th>Asal Sekolah</th>
                                 <th>Kelas Sekolah Formal</th>
-                                <th>Status<th>
-                                <th>Aksi<th>
+                                <th>Status</th>
+                                <th>Aksi</th>
                             </tr>
-                            <!-- end row -->
                         </thead>
                         <tbody>
-                            <!-- start row -->
-                            @foreach ($approve_student as $no=>$Ppdb_Student)
-                            <tr> 
-                                <td>{{$no+1}}</td>
-                                <td>{{$Ppdb_Student->std_name}}</td>
-                                <td>{{$Ppdb_Student->std_nisn}}</td>
-                                <td>{{$Ppdb_Student->std_school}}</td>
-                                <td>{{$Ppdb_Student->classes->cls_level}}</td>
-                                <td>{{$Ppdb_Student->std_status}}</td>
-                               
-                                <td>
-                                     <a href="/staff/approve_student/{{$Ppdb_Student->std_id}}/detail" class="btn btn-primary">Detail</a>
-                                     <a href="/staff/approve_student/{{$Ppdb_Student->std_id}}/edit" class="btn btn-primary">Edit</a>
-                                     <a href="/staff/approve_student/{{$Ppdb_Student->std_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
-                                </td>
-
-
-                                
-                            </tr>
+                            @foreach ($approve_student as $no => $student)
+                                <tr>
+                                    <td>{{ $no + 1 }}</td>
+                                    <td>{{ $student->std_name }}</td>
+                                    <td>{{ $student->std_nisn }}</td>
+                                    <td>{{ $student->std_school }}</td>
+                                    <td>{{ $student->classes->cls_level ?? '-' }}</td>
+                                    <td>{{ ucfirst($student->std_status) }}</td>
+                                    <td>
+                                        <a href="/staff/student/{{$student->std_id}}/detail" class="btn btn-info btn-sm">Detail</a>
+                                        <a href="{{ route('approve_student.edit', $student->std_id) }}" class="btn btn-warning btn-sm">Verifikasi</a>
+                                        <form action="{{ route('approve_student.destroy', $student->std_id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus siswa ini?')">Hapus</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
-                            <!-- end row -->
-                            
                         </tbody>
                         <tfoot>
-                            <!-- start row -->
-                            
-
                             <tr>
-                                <th width="10%">No</th>
+                                <th width="5%">No</th>
                                 <th>Nama</th>
                                 <th>NISN</th>
                                 <th>Asal Sekolah</th>
                                 <th>Kelas Sekolah Formal</th>
-                                <th>Status<th>
-                                <th>Aksi<th>
+                                <th>Status</th>
+                                <th>Aksi</th>
                             </tr>
-                            <!-- end row -->
                         </tfoot>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-    
 @endsection
-
-
 
 @push('script')
     <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>

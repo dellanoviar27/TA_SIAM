@@ -14,36 +14,24 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->bigIncrements('std_id');
             $table->string('std_nik');
+            $table->unsignedBigInteger('std_user_id')->nullable();
             $table->string('std_name');
             $table->string('std_gender');
-            $table->string('std_place_of_birth');
-            $table->date('std_date_of_birth');
+            $table->string('std_birth_place');
+            $table->date('std_birth_date');
             $table->string('std_child_to');
             $table->string('std_number_of_siblings');
             $table->string('std_address');
             $table->date('std_date_registration');
             $table->string('std_school');
             $table->unsignedBigInteger('std_class_id');
+            $table->unsignedBigInteger('std_parent_id')->nullable();
             $table->string('std_nisn');
-            // $table->string('std_father');
-            // $table->string('std_status_father');
-            // $table->string('std_address_father');
-            // $table->string('std_job_father');
-            // $table->string('std_income_father');
-            // $table->string('std_mother');
-            // $table->string('std_status_mother');
-            // $table->string('std_address_mother');
-            // $table->string('std_job_mother');
-            // $table->string('std_income_mother');
-            // $table->string('std_guardian');
-            // $table->string('std_address_guardian');
-            // $table->string('std_job_guardian');
-            // $table->string('std_income_guardian');
-            // $table->BigInteger('std_parent_phone');
-            $table->string('std_pictures');
-            $table->string('std_description');
-            $table->string('std_status')->default('Pending', 'approved', 'rejected');
-            $table->string('std_re_registration_status')->default('Pending', 'approved');
+            $table->string('std_pictures')->nullable();
+            $table->enum('std_status', ['pending', 'diterima', 'ditolak'])->default('pending');
+            $table->text('std_ppdb_notes')->nullable();
+            $table->enum('std_re-registration', ['pending', 'lunas', 'dicicil', 'gratis'])->default('pending');
+            $table->text('std_registration_notes')->nullable();
 
              // Manual timestamps
              $table->timestamp('std_created_at')->nullable();
@@ -63,6 +51,8 @@ return new class extends Migration
              $table->foreign('std_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
              $table->foreign('std_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
              $table->foreign('std_class_id')->references('cls_id')->on('classes')->onDelete('cascade');
+             $table->foreign('std_parent_id')->references('prt_id')->on('parents')->onDelete('cascade');
+             $table->foreign('std_user_id')->references('usr_id')->on('users')->onDelete('cascade');
         });
     }
 

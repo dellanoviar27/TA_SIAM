@@ -58,10 +58,10 @@
                 <div class="mb-4 row align-items-center">
                   <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Tempat Lahir</label>
                   <div class="col-sm-9">
-                    <input type="text" name="tch_place_of_birth" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tempat Lahir Kelas Wajib Diisi')" 
+                    <input type="text" name="tch_birth_place" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tempat Lahir Kelas Wajib Diisi')" 
                     onchange="this.setCustomValidity('')">
                   </div>
-                  @error('tch_place_of_birth')
+                  @error('tch_birth_place')
                     <div>error</div>
                   @enderror
                 </div>
@@ -69,10 +69,10 @@
                 <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Tanggal Lahir</label>
                     <div class="col-sm-9">
-                      <input type="date" name="tch_date_of_birth" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tanggal Lahir Wajib Diisi')" 
+                      <input type="date" name="tch_birth_date" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tanggal Lahir Wajib Diisi')" 
                       onchange="this.setCustomValidity('')">
                     </div>
-                    @error('tch_date_of_birth')
+                    @error('tch_birth_date')
                       <div>error</div>
                     @enderror
                   </div>
@@ -99,7 +99,7 @@
                     @enderror
                   </div>
 
-                  <div class="mb-4 row align-items-center">
+                  {{-- <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Email</label>
                     <div class="col-sm-9">
                       <input type="email" name="tch_email" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Email Wajib Diisi')" 
@@ -108,7 +108,7 @@
                     @error('tch_email')
                       <div>error</div>
                     @enderror
-                  </div>
+                  </div> --}}
 
                   <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Pendidikan Terakhir</label>
@@ -165,7 +165,7 @@
                     @enderror
                   </div>
 
-                  <div class="mb-4 row align-items-center">
+                  {{-- <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Foto Diri</label>
                     <div class="col-sm-9">
                       <input type="file" name="tch_pictures" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Foto Diri Wajib Diisi')" 
@@ -174,7 +174,7 @@
                     @error('tch_picturess')
                       <div>error</div>
                     @enderror
-                </div>
+                </div> --}}
                 
                 <div class="row">
                   <div class="col-sm-3"></div>

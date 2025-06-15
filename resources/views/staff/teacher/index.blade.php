@@ -29,14 +29,6 @@
                                 <th>NIK</th>
                                 <th>Nama</th>
                                 <th>Jenis Kelamin</th>
-                                {{-- <th>Tempat Lahir</th> --}}
-                                {{-- <th>Tanggal Lahir</th> --}}
-                                {{-- <th>Alamat</th> --}}
-                                {{-- <th>No. HP</th> --}}
-                                {{-- <th>Email</th> --}}
-                                {{-- <th>Pendidikan Terakhir</th> --}}
-                                {{-- <th>Pendidikan Saat Ini</th> --}}
-                                {{-- <th>Nama Institusi Pendidikan</th> --}}
                                 <th>Tugas Utama</th>
                                 <th>Tugas Tambahan</th>
                                 <th>Aksi</th>

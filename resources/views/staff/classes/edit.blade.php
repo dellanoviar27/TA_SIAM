@@ -24,17 +24,17 @@
                     <select class ="form-select mr-sm-2" id="inLineFormCustomSelect" name="cls_level"  oninvalid="this.setCustomValidity ('Tingkatan Wajib Diisi')"
                     onchange="this.setCustomValidity('')" required>
                     @if ($Classes->cls_level == "Idadiya")
-                    <option value="Idadiya">Idadiya</option>
+                    <option value="Idadiya">Idadiyah</option>
                     <option value="Awwaliyah">Awwaliyah</option>
                     <option value="Wustho">Wustho</option>
                     <option value="Ula">Ula</option>
                     @elseif($Classes->cls_level == "Awwaliyah")
-                    <option value="Idadiya">Idadiya</option>
+                    <option value="Idadiya">Idadiyah</option>
                     <option value="Awwaliyah">Awwaliyah</option>
                     <option value="Wustho">Wustho</option>
                     <option value="Ula">Ula</option>
                     @elseif($Classes->cls_level == "Wustho")
-                    <option value="Idadiya">Idadiya</option>
+                    <option value="Idadiya">Idadiyah</option>
                     <option value="Awwaliyah">Awwaliyah</option>
                     <option value="Wustho">Wustho</option>
                     <option value="Ula">Ula</option>

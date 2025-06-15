@@ -42,7 +42,7 @@
                                 <td>{{$no+1}}</td>
                                 <td>{{$student->std_nik}}</td>
                                 <td>{{$student->std_name}}</td>
-                                <td>{{$student->classes->cls_level}} {{$Schedule->classes->cls_number}}</td>
+                                <td>{{$student->classes->cls_level}} {{$student->classes->cls_number}}</td>
                                 <td>{{$student->std_address}}</td>
                              
                                

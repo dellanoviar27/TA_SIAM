@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class approve_student extends Model
+class information extends Model
 {
     use HasFactory, SoftDeletes ;
-    protected $table = 'students';
-    protected $primaryKey = 'std_id';
+    protected $table = 'informations';
+    protected $primaryKey = 'inf_id';
     protected $guarded = [];
 
-    const CREATED_AT = 'std_created_at';
-    const UPDATED_AT = 'std_updated_at';
-    const DELETED_AT = 'std_deleted_at';
+    const CREATED_AT = 'inf_created_at';
+    const UPDATED_AT = 'inf_updated_at';
+    const DELETED_AT = 'inf_deleted_at';
 }

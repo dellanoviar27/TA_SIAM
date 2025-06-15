@@ -62,10 +62,10 @@
                 <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Tempat Lahir</label>
                     <div class="col-sm-9">
-                      <input type="text" name="tch_place_of_birth" value="{{$teacher->tch_place_of_birth}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tempat Lahir Kelas Wajib Diisi')" 
+                      <input type="text" name="tch_birth_place" value="{{$teacher->tch_birth_place}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tempat Lahir Kelas Wajib Diisi')" 
                       onchange="this.setCustomValidity('')">
                     </div>
-                    @error('tch_place_of_birth')
+                    @error('tch_birth_place')
                       <div>error</div>
                     @enderror
                   </div>
@@ -73,10 +73,10 @@
                   <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Tanggal Lahir</label>
                     <div class="col-sm-9">
-                      <input type="date" name="tch_date_of_birth" value="{{$teacher->tch_date_of_birth}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tanggal Lahir Wajib Diisi')" 
+                      <input type="date" name="tch_birth_date" value="{{$teacher->tch_birth_date}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tanggal Lahir Wajib Diisi')" 
                       onchange="this.setCustomValidity('')">
                     </div>
-                    @error('tch_date_of_birth')
+                    @error('tch_birth_date')
                       <div>error</div>
                     @enderror
                   </div>
@@ -103,7 +103,7 @@
                     @enderror
                   </div>
 
-                  <div class="mb-4 row align-items-center">
+                  {{-- <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Email</label>
                     <div class="col-sm-9">
                       <input type="email" name="tch_email" value="{{$teacher->tch_email}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Email Wajib Diisi')" 
@@ -112,7 +112,7 @@
                     @error('tch_email')
                       <div>error</div>
                     @enderror
-                  </div>
+                  </div> --}}
 
                   <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Pendidikan Terakhir</label>
@@ -148,6 +148,17 @@
                   </div>
 
                   <div class="mb-4 row align-items-center">
+                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Tugas Utama</label>
+                    <div class="col-sm-9">
+                      <input type="text" name="tch_main_task" value="{{$teacher->tch_main_task}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tugas Utama Pendidikan Wajib Diisi')" 
+                      onchange="this.setCustomValidity('')">
+                    </div>
+                    @error('tch_main_task')
+                      <div>error</div>
+                    @enderror
+                  </div>
+
+                  <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Tugas Tambahan</label>
                     <div class="col-sm-9">
                       <input type="text" name="tch_additional_task" value="{{$teacher->tch_additional_task}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tugas Tambahan Pendidikan Wajib Diisi')" 
@@ -158,8 +169,8 @@
                     @enderror
                   </div>
 
-                  <div class="mb-4 row align-items-center">
-                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Tugas Tambahan</label>
+                  {{-- <div class="mb-4 row align-items-center">
+                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Foto</label>
                     <div class="col-sm-9">
                       <input type="file" name="tch_pictures" value="{{$teacher->tch_pictures}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Foto Diri Wajib Diisi')" 
                       onchange="this.setCustomValidity('')">
@@ -167,7 +178,7 @@
                     @error('tch_pictures')
                       <div>error</div>
                     @enderror
-                  </div>
+                  </div> --}}
 
                 <div class="row">
                   <div class="col-sm-3"></div>

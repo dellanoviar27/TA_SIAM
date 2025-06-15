@@ -58,10 +58,10 @@
               <div class="mb-4 row align-items-center">
                 <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Tempat Lahir</label>
                 <div class="col-sm-9">
-                  <input type="text" name="std_place_of_birth" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tempat Lahir Kelas Wajib Diisi')" 
+                  <input type="text" name="std_place_birth" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tempat Lahir Kelas Wajib Diisi')" 
                   onchange="this.setCustomValidity('')">
                 </div>
-                @error('std_place_of_birth')
+                @error('std_place_birth')
                   <div>error</div>
                 @enderror
               </div>
@@ -69,10 +69,10 @@
               <div class="mb-4 row align-items-center">
                   <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Tanggal Lahir</label>
                   <div class="col-sm-9">
-                    <input type="date" name="pds_date_of_birth" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tanggal Lahir Wajib Diisi')" 
+                    <input type="date" name="pds_date_birth" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tanggal Lahir Wajib Diisi')" 
                     onchange="this.setCustomValidity('')">
                   </div>
-                  @error('pds_date_of_birth')
+                  @error('pds_date_birth')
                     <div>error</div>
                   @enderror
                 </div>

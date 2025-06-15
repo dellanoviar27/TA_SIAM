@@ -40,19 +40,17 @@ class TeacherController extends Controller
             'tch_nik'               =>  $request->tch_nik,
             'tch_name'              =>  $request->tch_name,
             'tch_gender'            =>  $request->tch_gender,
-            'tch_place_of_birth'    =>  $request->tch_place_of_birth,
-            'tch_date_of_birth'     =>  $request->tch_date_of_birth,
+            'tch_birth_place'       =>  $request->tch_birth_place,
+            'tch_birth_date'        =>  $request->tch_birth_date,
             'tch_address'           =>  $request->tch_address,
             'tch_phone'             =>  $request->tch_phone,
             'tch_address'           =>  $request->tch_address,
-            'tch_email'             =>  $request->tch_email,
             'tch_last_education'    =>  $request->tch_last_education,
             'tch_current_education' =>  $request->tch_current_education,
             'tch_name_institution'  =>  $request->tch_name_institution,
             'tch_main_task'         =>  $request->tch_main_task,
             'tch_additional_task'   =>  $request->tch_additional_task,
             'tch_pictures'          =>  $request->tch_pictures,
-         
         ]);
 
         Alert::success('Berhasil Menambahkan', 'Guru Berhasil Ditambahkan');
@@ -97,14 +95,14 @@ class TeacherController extends Controller
     {
         $updateTeacher = Teacher::findOrFail($id);
         // dd ($destroyClasses);
+
         $updateTeacher-> tch_nik               = $request -> tch_nik;
         $updateTeacher-> tch_name              = $request -> tch_name;
         $updateTeacher-> tch_gender            = $request -> tch_gender;
-        $updateTeacher-> tch_place_of_birth    = $request -> tch_place_of_birth;
-        $updateTeacher-> tch_date_of_birth     = $request -> tch_date_of_birth;
+        $updateTeacher-> tch_birth_place       = $request -> tch_birth_place;
+        $updateTeacher-> tch_birth_date        = $request -> tch_birth_date;
         $updateTeacher-> tch_address           = $request -> tch_address;
         $updateTeacher-> tch_phone             = $request -> tch_phone;
-        $updateTeacher-> tch_email             = $request -> tch_email;
         $updateTeacher-> tch_last_education    = $request -> tch_last_education;
         $updateTeacher-> tch_current_education = $request -> tch_current_education;
         $updateTeacher-> tch_name_institution  = $request -> tch_name_institution;

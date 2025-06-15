@@ -47,6 +47,7 @@
                                 <td>{{$Schedule->classes->cls_level}} {{$Schedule->classes->cls_number}}</td>
                                 <td>{{$Schedule->subject->sbj_name}}</td>
                                 <td>{{$Schedule->teacher->tch_name}}</td>
+                                <td>{{$Schedule->semester->smt_semester}}</td>
                                 <td>{{$Schedule->sch_start_time}}</td>
                                 <td>{{$Schedule->sch_end_time}}</td>
                                 <td>

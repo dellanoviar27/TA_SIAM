@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PpdbController;
 use App\Http\Controllers\SubjectController;
@@ -11,47 +12,70 @@ use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\HomeroomTeacherController;
 use App\Http\Controllers\student\PpdbStudentController;
 use App\Http\Controllers\ApproveStudentController;
-
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\InformationController;
+use App\Http\Controllers\StaffAccountController;
+use App\Http\Controllers\StaffDashboardController;
 
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-route::get('/master', function(){
-    return view('staff.profile.content');
-});
+require __DIR__.'/auth.php';
 
-Route::get('/login2', function () {
-    return view('auth.login2');
-});
+Route::get('/admin', function () {
+    return '<h1>Ini halaman admin</h2>';
+})->middleware('role:staff');
+
+Route::get('/teacher', function () {
+    return '<h1>Ini halaman guru</h1>';
+})->middleware('role:teacher');
+
+
+
+
+// <!-- ---------------------------------- -->
+// <!-- WEB PROFILE -->
+// <!-- ---------------------------------- -->
+//webprofile
+Route::get('/webprofile', function() {
+    return view('webprofile');
+})->name('webprofile');
 
 // <!-- ---------------------------------- -->
 // <!-- STAFF -->
 // <!-- ---------------------------------- -->
+
 // <!-- Home -->
-//staff.pengumuman
+//staff.dashboard
+Route::middleware(['auth', 'role:staff'])->group(function () {
+Route::get('/staff', [StaffDashboardController::class, 'index'])->name('staff');
+
 
 // <!-- PPDB -->
 //staff.approve_student
 Route::get('/staff/approve_student', [ApproveStudentController::Class, 'index'])->name('staff.approve_student');
+Route::post('/staff/store_with_parent', [PpdbStudentController::class, 'store_with_parent'])->name('store_with_parent');
 
-Route::middleware(['auth', 'role:staff'])->group(function () {
-Route::get('/students/pending', [StudentController::class, 'pending'])->name('students.pending');
-Route::post('/students/{id}/approve', [StudentController::class, 'approve'])->name('students.approve');
-Route::post('/students/{id}/reject', [StudentController::class, 'reject'])->name('students.reject');
-});
 
+//staff.pengumuman
+Route::get('/staff/information', [InformationController::Class, 'index'])->name('staff.information.index');
+Route::get('/staff/information/create', [InformationController::Class, 'create'])->name('staff.information.create');
+Route::post('/staff/information/create', [InformationController::Class, 'store'])->name('staff.information.store');
+Route::get('/staff/information/{id}/edit', [InformationController::Class, 'edit'])->name('staff.information.edit');
+Route::post('/staff/information/{id}/edit', [InformationController::Class, 'update'])->name('staff.information.edit');
+Route::delete('/staff/information/{id}/destroy', [InformationController::Class, 'destroy'])->name('staff.information.destroy');
 //
 
 //staff.semester
@@ -119,7 +143,22 @@ Route::get('/staff/teacher/{id}/detail', [TeacherController::Class, 'detail'])->
 
 // <!-- Laporan -->
 //staff.
-//
+Route::get('/staff/staff_account', [StaffAccountController::class, 'index'])->name('staff.staff_account.index');
+Route::get('/staff/staff_account/create', [StaffAccountController::class, 'create'])->name('staff.staff_account.create');
+Route::post('/staff/staff_account/create', [StaffAccountController::class, 'store'])->name('staff.staff_account.store');
+Route::delete('/staff/teacher/{id}/destroy', [StaffAccountController::Class, 'destroy'])->name('staff.staff_account.destroy');
+
+
+//staff akun staff
+Route::get('/staff/management', [StaffController::Class, 'index'])->name('staff.management.index');
+Route::get('/staff/management/create', [StaffController::Class, 'create'])->name('staff.management.create');
+Route::post('/staff/management/create', [StaffController::Class, 'store'])->name('staff.management.store');
+Route::get('/staff/management/{id}/edit', [StaffController::Class, 'edit'])->name('staff.management.edit');
+Route::post('/staff/management/{id}/edit', [StaffController::Class, 'update'])->name('staff.management.edit');
+Route::delete('/staff/management/{id}/destroy', [StaffController::Class, 'destroy'])->name('staff.management.destroy');
+Route::get('/staff/management/{id}/detail', [StaffController::Class, 'detail'])->name('staff.management');
+});
+
 
 // <!-- ---------------------------------- -->
 // <!-- TEACHER -->
@@ -129,32 +168,24 @@ Route::get('/staff/teacher/{id}/detail', [TeacherController::Class, 'detail'])->
 // <!-- ---------------------------------- -->
 // <!-- STUDENT -->
 // <!-- ---------------------------------- -->
-//student.Ppdb_Student
-Route::get('/student/Ppdb_Student', [PpdbStudentController::Class, 'index'])->name('student.Ppdb_Student');
+//student.dashboard
+Route::middleware(['auth', 'role:student'])->group(function () {
+    Route::get('/student/dashboard', function () {
+        return view('student.dashboard');
+    })->name('student.dashboard');
+
+
+
+//student.ppdb_student - Data Diri
+Route::middleware(['auth', 'role:student'])->group(function () {
 Route::get('/student/Ppdb_Student/create', [PpdbStudentController::Class, 'create'])->name('student.Ppdb_Student.create');
 Route::post('/student/Ppdb_Student/create', [PpdbStudentController::Class, 'store'])->name('student.Ppdb_Student.store');
+Route::resource('approve_student', ApproveStudentController::class);
+Route::get('/staff/approve_student/{id}/detail', [ApproveStudentController::Class, 'detail'])->name('staff.approve_student');
+
+//student.ppdb_parent - Data Orangtua
+Route::post('/staff/ppdb_parent', [PpdbStudentController::class, 'store_parent'])->name('ppdb_parent.store');
 Route::get('/student/Ppdb_Student/create_parent', [PpdbStudentController::Class, 'create_parent'])->name('student.Ppdb_Student.create_parent');
-Route::get('/student/Ppdb_Student/create_parent', [PpdbStudentController::Class, 'store_parent'])->name('student.Ppdb_Student.create_parent');
-
-
-
-
-
-
-
-
-
-//staff.ppdb
-Route::get('/student/ppdb', [PpdbController::Class, 'index'])->name('student.ppdb');
-Route::post('/student/ppdb/create', [PpdbController::Class, 'store'])->name('student.ppdbs.store');
-Route::get('/student/ppdb/{id}/edit', [PpdbController::Class, 'edit'])->name('student.ppdb.edit');
-Route::post('/student/ppdb/{id}/edit', [PpdbController::Class, 'update'])->name('student.ppdb.edit');
-Route::delete('/student/ppdb/{id}/destroy', [PpdbController::Class, 'destroy'])->name('student.ppdb.destroy');
-
-//staff.ppdb_approval
-Route::get('/staff/ppdb_approval', [TeacherController::Class, 'index'])->name('staff.ppdb_approval');
-Route::get('/staff/ppdb_approval/create', [TeacherController::Class, 'create'])->name('staff.ppdb_approval.create');
-Route::post('/staff/ppdb_approval/create', [TeacherController::Class, 'store'])->name('staff.ppdb_approval.store');
-Route::get('/staff/ppdb_approval/{id}/edit', [TeacherController::Class, 'edit'])->name('staff.ppdb_approval.edit');
-Route::post('/staff/ppdb_approval/{id}/edit', [TeacherController::Class, 'update'])->name('staff.ppdb_approval.edit');
-Route::delete('/staff/ppdb_approval/{id}/destroy', [TeacherController::Class, 'destroy'])->name('staff.ppdb_approval.destroy');
+Route::post('/student/Ppdb_Student/create_parent', [PpdbStudentController::Class, 'store_parent'])->name('student.Ppdb_Student.create_parent');
+});
+});

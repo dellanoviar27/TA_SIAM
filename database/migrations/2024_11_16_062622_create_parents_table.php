@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('prt_address_guardian');
             $table->string('prt_job_guardian');
             $table->string('prt_income_guardian');
-            $table->BigInteger('prt_parent_phone');
+            $table->string('prt_parent_phone');
 
              // Manual timestamps
              $table->timestamp('prt_created_at')->nullable();

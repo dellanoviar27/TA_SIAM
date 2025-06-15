@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
@@ -18,18 +20,21 @@ class User extends Authenticatable
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
+    use HasRoles;
     use TwoFactorAuthenticatable;
+    // use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = [
+        protected $fillable = [
         'name',
         'email',
         'password',
-    ];
+        'role',
+        ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -65,4 +70,9 @@ class User extends Authenticatable
         ];
     }
     protected $primaryKey = "usr_id";
+
+        public function staff()
+    {
+        return $this->hasOne(Staff::class, 'stf_user_id', 'usr_id');
+    }
 }

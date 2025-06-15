@@ -34,17 +34,8 @@
       <div class="card-body p-4">
         <div class="row">
           <div class="col-lg-6">
-            <div id="sync1" class="owl-carousel owl-theme">
-              <div class="item rounded-4 overflow-hidden">
-                <img src="{{ asset('storage/'.$teacher->tch_pictures)}}" alt="modernize-img" class="img-fluid">
-              </div>
-              
-            </div>
-          </div>
 
-          <div class="col-lg-6">
-            <div class="shop-content">
-              <div class="d-flex align-items-center gap-2 mb-2">
+            <div class="d-flex align-items-center gap-2 mb-2">
                 <span class="badge text-bg-success fs-2 fw-semibold"></span>
                 <span class="fs-2"></span>
               </div>
@@ -52,16 +43,6 @@
               <h6 class="mb-0 fs-4">{{$teacher->tch_nik}}</h6>
               <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
                 <ul class="list-unstyled d-flex align-items-center mb-0"> 
-              </div>
-
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>Nama</h4>
-              <h6 class="mb-0 fs-4">{{$teacher->tch_name}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
               </div>
 
               <div class="d-flex align-items-center gap-2 mb-2">
@@ -78,43 +59,13 @@
                 <span class="badge text-bg-success fs-2 fw-semibold"></span>
                 <span class="fs-2"></span>
               </div>
-              <h4>Tempat Lahir</h4>
-              <h6 class="mb-0 fs-4">{{$teacher->tch_place_of_birth}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>
-
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>Tanggal Lahir</h4>
-              <h6 class="mb-0 fs-4">{{$teacher->tch_date_of_birth}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>
-
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>Alamat</h4>
-              <h6 class="mb-0 fs-4">{{$teacher->tch_address}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>
-
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
               <h4>No. Hp</h4>
               <h6 class="mb-0 fs-4">{{$teacher->tch_phone}}</h6>
               <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
                 <ul class="list-unstyled d-flex align-items-center mb-0">
               </div>
 
-              <div class="d-flex align-items-center gap-2 mb-2">
+              {{-- <div class="d-flex align-items-center gap-2 mb-2">
                 <span class="badge text-bg-success fs-2 fw-semibold"></span>
                 <span class="fs-2"></span>
               </div>
@@ -122,9 +73,9 @@
               <h6 class="mb-0 fs-4">{{$teacher->tch_email}}</h6>
               <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
                 <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>
+              </div> --}}
 
-              <div class="d-flex align-items-center gap-2 mb-2">
+               <div class="d-flex align-items-center gap-2 mb-2">
                 <span class="badge text-bg-success fs-2 fw-semibold"></span>
                 <span class="fs-2"></span>
               </div>
@@ -150,6 +101,52 @@
               </div>
               <h4>Nama Institusi Pendidikan</h4>
               <h6 class="mb-0 fs-4">{{$teacher->tch_name_institution}}</h6>
+              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
+                <ul class="list-unstyled d-flex align-items-center mb-0">
+              </div>
+
+          </div>
+
+          <div class="col-lg-6">
+            <div class="shop-content">
+              
+
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="badge text-bg-success fs-2 fw-semibold"></span>
+                <span class="fs-2"></span>
+              </div>
+              <h4>Nama</h4>
+              <h6 class="mb-0 fs-4">{{$teacher->tch_name}}</h6>
+              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
+                <ul class="list-unstyled d-flex align-items-center mb-0">
+              </div>
+
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="badge text-bg-success fs-2 fw-semibold"></span>
+                <span class="fs-2"></span>
+              </div>
+              <h4>Tempat Lahir</h4>
+              <h6 class="mb-0 fs-4">{{$teacher->tch_birth_place}}</h6>
+              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
+                <ul class="list-unstyled d-flex align-items-center mb-0">
+              </div>
+
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="badge text-bg-success fs-2 fw-semibold"></span>
+                <span class="fs-2"></span>
+              </div>
+              <h4>Tanggal Lahir</h4>
+              <h6 class="mb-0 fs-4">{{$teacher->tch_birth_date}}</h6>
+              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
+                <ul class="list-unstyled d-flex align-items-center mb-0">
+              </div>
+
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="badge text-bg-success fs-2 fw-semibold"></span>
+                <span class="fs-2"></span>
+              </div>
+              <h4>Alamat</h4>
+              <h6 class="mb-0 fs-4">{{$teacher->tch_address}}</h6>
               <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
                 <ul class="list-unstyled d-flex align-items-center mb-0">
               </div>

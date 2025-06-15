@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Support\Facedes\Facade;
+use Illuminate\Support\ServiceProvider;
+
+
 return [
 
     /*
@@ -122,5 +126,32 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Provider
+    |--------------------------------------------------------------------------
+    |
+    | These configuration options determine the driver used to determine and
+    | manage Laravel's "maintenance mode" status. The "cache" driver will
+    | allow maintenance mode to be controlled across multiple machines.
+    |
+    | Supported drivers: "file", "cache"
+    |
+    */
+
+    'providers' => ServiceProvider::defaultProviders()->merge([
+
+        // Package Service Providers
+
+        // Application Service Providers
+
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+        ])->toArray(),
 
 ];

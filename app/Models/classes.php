@@ -17,4 +17,9 @@ class classes extends Model
     const UPDATED_AT = 'cls_updated_at';
     const DELETED_AT = 'cls_deleted_at';
 
+    public function students()
+    {
+        return $this->hasMany(Ppdb_Student::class, 'std_class_id', 'cls_id');
+    }
+
 }

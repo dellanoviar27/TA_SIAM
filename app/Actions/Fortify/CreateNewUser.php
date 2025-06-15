@@ -32,13 +32,16 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
 
-        if($input['role'] == 1){
-            $createUser->assignRole('student');
-        }elseif($input['role'] == 2){
-            $createUser->assingRole('teacher');
-        }else{
-            $createUser->assignRole('admin');
-        }
+        // Langsung assign student saja jika ini form umum
+        $createUser->assignRole('student');
+        
+        // if($input['role'] == 1){
+        //     $createUser->assignRole('student');
+        // }elseif($input['role'] == 2){
+        //     $createUser->assignRoleRole('teacher');
+        // }else{
+        //     $createUser->assignRole('admin');
+        // }
         return $createUser;
     }
 }

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\student;
-use App\Models\classes;
+use App\Models\Classes;
+use App\Models\User;
 use Illuminate\Http\Request;
 Use Alert;
 
@@ -15,7 +16,7 @@ class StudentController extends Controller
 
     public function index()
     {
-        $student = Student::all();
+        $student = Student::with('classes')->where('std_status', 'diterima')->get();
         $title = 'Hapus Siswa!';
         $text = "Siswa Tidak Bisa Kembali Jika Dihapus";
         confirmDelete($title, $text);
