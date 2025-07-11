@@ -18,7 +18,51 @@
           <form action="" method="post">
             @csrf
             <div class="card-body">
-              <div class="mb-4 row align-items-center">
+
+                <div class="mb-4 row align-items-center">
+                <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Nama Lengkap</label>
+                <div class="col-sm-9">
+                  <input type="text" name="name" class="form-control" value="{{ old('name') }}" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Nama Wajib Diisi')" 
+                  onchange="this.setCustomValidity('')">
+                </div>
+                @error('name')
+                  <div>error</div>
+                @enderror
+              </div>
+
+                <div class="mb-4 row align-items-center">
+                  <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Email</label>
+                  <div class="col-sm-9">
+                    <input type="email" name="email" class="form-control" value="{{ old('email') }}" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Email Wajib Diisi')" 
+                    onchange="this.setCustomValidity('')">
+                  </div>
+                  @error('email')
+                    <div>error</div>
+                  @enderror
+                </div>
+
+               <div class="mb-4 row align-items-center">
+                  <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Password</label>
+                  <div class="col-sm-9">
+                    <input type="password" name="password" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Password Wajib Diisi')" 
+                    onchange="this.setCustomValidity('')">
+                  </div>
+                  @error('password')
+                    <div>error</div>
+                  @enderror
+                </div>
+
+                <div class="mb-4 row align-items-center">
+                  <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Konfirmasi Password</label>
+                  <div class="col-sm-9">
+                    <input type="password" name="password_confirmation" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Password Wajib Diisi')" 
+                    onchange="this.setCustomValidity('')">
+                  </div>
+                </div>
+
+                {{-- Data dari table teacher --}}
+
+                 <div class="mb-4 row align-items-center">
                 <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">NIK</label>
                 <div class="col-sm-9">
                   <input type="number" name="tch_nik" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('NIK Wajib Diisi')" 
@@ -28,19 +72,8 @@
                   <div>error</div>
                 @enderror
               </div>
-                
-                <div class="mb-4 row align-items-center">
-                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Nama</label>
-                    <div class="col-sm-9">
-                      <input type="text" name="tch_name" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Nama Wajib Diisi')" 
-                      onchange="this.setCustomValidity('')">
-                    </div>
-                    @error('tch_name')
-                      <div>error</div>
-                    @enderror
-                  </div>
 
-                  <div class="mb-4 row align-items-center">
+              <div class="mb-4 row align-items-center">
                     <label for="exampleInputText1" class="form-label col-sm-3 col-form-label">Jenis Kelamin</label>
                     <div class="col-sm-9">
                       <select class ="form-select mr-sm-2" id="inLineFormCustomSelect" name="tch_gender" oninvalid="this.setCustomValidity ('Jenis Kelamin Wajib Diisi')"
@@ -99,17 +132,6 @@
                     @enderror
                   </div>
 
-                  {{-- <div class="mb-4 row align-items-center">
-                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Email</label>
-                    <div class="col-sm-9">
-                      <input type="email" name="tch_email" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Email Wajib Diisi')" 
-                      onchange="this.setCustomValidity('')">
-                    </div>
-                    @error('tch_email')
-                      <div>error</div>
-                    @enderror
-                  </div> --}}
-
                   <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Pendidikan Terakhir</label>
                     <div class="col-sm-9">
@@ -154,7 +176,7 @@
                     @enderror
                   </div>
 
-                  <div class="mb-4 row align-items-center">
+                   <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Tugas Tambahan</label>
                     <div class="col-sm-9">
                       <input type="text" name="tch_additional_task" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tugas Tambahan Wajib Diisi')" 
@@ -164,7 +186,7 @@
                       <div>error</div>
                     @enderror
                   </div>
-                
+
                 <div class="row">
                   <div class="col-sm-3"></div>
                   <div class="col-sm-9">

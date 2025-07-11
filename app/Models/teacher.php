@@ -16,4 +16,9 @@ class teacher extends Model
     const CREATED_AT = 'tch_created_at';
     const UPDATED_AT = 'tch_updated_at';
     const DELETED_AT = 'tch_deleted_at';
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'tch_user_id', 'usr_id');
+    }
 }

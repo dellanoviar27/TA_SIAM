@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Tambah Staf
+    SIAM Al-Mu'min | Edit Guru
 @endsection
 
 @section('content')
@@ -13,14 +13,15 @@
     <div class="col-lg-12">
         <div class="card">
           <div class="px-4 py-3 border-bottom">
-            <h4 class="card-title mb-0">Tambah Staf</h4>
+            <h4 class="card-title mb-0">Edit Guru</h4>
           </div>
           <form action="" method="post">
             @csrf
             <div class="card-body">
 
-                <div class="mb-4 row align-items-center">
-                <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Nama Lengkap</label>
+
+                 <div class="mb-4 row align-items-center">
+                <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Nama</label>
                 <div class="col-sm-9">
                   <input type="text" name="name" class="form-control" value="{{ old('name') }}" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Nama Wajib Diisi')" 
                   onchange="this.setCustomValidity('')">
@@ -30,7 +31,7 @@
                 @enderror
               </div>
 
-                <div class="mb-4 row align-items-center">
+               <div class="mb-4 row align-items-center">
                   <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Email</label>
                   <div class="col-sm-9">
                     <input type="email" name="email" class="form-control" value="{{ old('email') }}" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Email Wajib Diisi')" 
@@ -60,7 +61,6 @@
                   </div>
                 </div>
 
-                
                 <div class="row">
                   <div class="col-sm-3"></div>
                   <div class="col-sm-9">

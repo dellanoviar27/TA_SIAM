@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->bigIncrements('cls_id');
-            $table->string('cls_level');
-            $table->string('cls_number');
-            $table->string('cls_general_level');
+            $table->string('cls_level'); //Idadiyah, Awaliyah dll
+            $table->string('cls_number'); //1,2,3 -> Idadiyah 1 dll
+            $table->string('cls_general_level'); // SD 1, SD 2 dll
             $table->timestamps();
             
             $table->renameColumn('updated_at', 'cls_updated_at');

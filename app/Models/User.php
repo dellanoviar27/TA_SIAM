@@ -71,8 +71,18 @@ class User extends Authenticatable
     }
     protected $primaryKey = "usr_id";
 
-        public function staff()
+    public function teacher()
     {
-        return $this->hasOne(Staff::class, 'stf_user_id', 'usr_id');
+        return $this->hasOne(Teacher::class, 'tch_user_id', 'usr_id');
+    }
+
+    public function student()
+    {
+        return $this->hasOne(Student::class, 'std_user_id', 'usr_id');
+    }
+
+    public function parent()
+    {
+        return $this->hasOne(Ppdb_Parent::class, 'prt_user_id', 'usr_id');
     }
 }

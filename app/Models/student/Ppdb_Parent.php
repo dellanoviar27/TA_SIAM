@@ -1,30 +1,25 @@
 <?php
 
-namespace App\Models\student;
+namespace App\Models\Student;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\Models\Student;
 
 class Ppdb_Parent extends Model
 {
+    use HasFactory, SoftDeletes;
 
-    use HasFactory, SoftDeletes ;
     protected $table = 'parents';
     protected $primaryKey = 'prt_id';
-    protected $guarded = [];
 
     const CREATED_AT = 'prt_created_at';
     const UPDATED_AT = 'prt_updated_at';
     const DELETED_AT = 'prt_deleted_at';
 
-    // public function student()
-    // {
-    //     return $this->belongsTo(Student::class, 'student_id');
-    // }
-
     protected $fillable = [
+        'prt_user_id',
         'prt_father',
         'prt_status_father',
         'prt_address_father',
@@ -42,8 +37,19 @@ class Ppdb_Parent extends Model
         'prt_parent_phone'
     ];
 
+    /**
+     * Relasi ke data siswa berdasarkan prt_id di kolom std_parent_id
+     */
     public function students()
     {
-    return $this->hasMany(Student::class, 'std_parent_id', 'prt_id');
+        return $this->hasMany(Student::class, 'std_parent_id', 'prt_id');
+    }
+
+    /**
+     * Relasi ke tabel users (akun siswa yang terhubung dengan orang tua)
+     */
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'prt_user_id', 'usr_id');
     }
 }

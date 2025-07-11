@@ -46,7 +46,7 @@
             <!-- ---------------------------------- -->
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">PPDB</span>
+              <span class="hide-menu">PENDAFTARAN</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="/staff/approve_student" aria-expanded="false">
@@ -56,14 +56,7 @@
                 <span class="hide-menu">Verifikasi Siswa Baru</span>
               </a>
             </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./main/app-calendar.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-reload"></i>
-                </span>
-                <span class="hide-menu">Daftar Ulang</span>
-              </a>
-            </li>
+          
             <li class="sidebar-item">
               <a class="sidebar-link" href="/staff/semester" aria-expanded="false">
                 <span>
@@ -86,6 +79,14 @@
                   <i class="ti ti-layout"></i>
                 </span>
                 <span class="hide-menu">Kelas</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/staff/class-student" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout"></i>
+                </span>
+                <span class="hide-menu">Kelas Siswa</span>
               </a>
             </li>
             {{-- <li class="sidebar-item">
@@ -156,7 +157,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="/staff/teacher" aria-expanded="false">
+              <a class="sidebar-link" href="/staff/teacher_account" aria-expanded="false">
                 <span>
                   <i class="ti ti-user"></i>
                 </span>
@@ -164,7 +165,7 @@
               </a>
             </li>
              <li class="sidebar-item">
-              <a class="sidebar-link" href="/staff/management" aria-expanded="false">
+              <a class="sidebar-link" href="/staff/staff_account" aria-expanded="false">
                 <span>
                   <i class="ti ti-user"></i>
                 </span>
@@ -187,55 +188,14 @@
                 <span class="hide-menu">Laporan Nilai</span>
               </a>
             </li>
-            <li class="sidebar-item">
+            {{-- <li class="sidebar-item">
               <a class="sidebar-link" href="./main/app-calendar.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-receipt"></i>
                 </span>
                 <span class="hide-menu">Rekap Absensi</span>
               </a>
-            </li>
-
-            <!-- ---------------------------------- -->
-            <!-- SETTING-->
-            <!-- ---------------------------------- -->
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">SETTING</span>
-            </li>
-            {{-- <li class="sidebar-item">
-              <a class="sidebar-link" href="./main/app-calendar.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-settings"></i>
-                </span>
-                <span class="hide-menu">Pengaturan Akun</span>
-              </a>
             </li> --}}
-
-            <li class="sidebar-item">
-              <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
-                <span class="d-flex">
-                  <i class="ti ti-layout"></i>
-                </span>
-                <span class="hide-menu">Pengaturan Akun</span>
-              </a>
-              <ul aria-expanded="false" class="collapse first-level">
-                <li class="sidebar-item">
-                  <a href="/staff/staff_account" class="sidebar-link">
-                    <div class="round-16 d-flex align-items-center justify-content-center">
-                      <i class="ti ti-circle"></i>
-                    </div>
-                    <span class="hide-menu">Staff</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a href="./main/widgets-banners.html" class="sidebar-link">
-                    <div class="round-16 d-flex align-items-center justify-content-center">
-                      <i class="ti ti-circle"></i>
-                    </div>
-                    <span class="hide-menu">Guru</span>
-                  </a>
-                </li>
         <!-- ---------------------------------- -->
         <!-- Start Vertical Layout Sidebar -->
         <!-- ---------------------------------- -->

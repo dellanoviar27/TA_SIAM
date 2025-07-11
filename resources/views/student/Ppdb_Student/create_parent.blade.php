@@ -15,9 +15,21 @@
           <div class="px-4 py-3 border-bottom">
             <h4 class="card-title mb-0">Data Orangtua Siswa</h4>
           </div>
-          <form action="{{ route('store_with_parent')}}" method="post">
+          <form action="/student/Ppdb_Student/create_parent" method="post">
+          {{-- <form action="{{ route('store_with_parent')}}" method="post"> --}}
             @csrf
             <div class="card-body">
+
+                 <div class="mb-4 row align-items-center">
+                <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Orangtua Dari</label>
+                <div class="col-sm-9">
+                  <input type="text" name="name" class="form-control" value="{{ old('name', $user->name ?? '') }}" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('')" 
+                  onchange="this.setCustomValidity('')">
+                </div>
+                @error('name')
+                  <div>error</div>
+                @enderror
+              </div>
 
                 <div class="mb-4 row align-items-center">
                   <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Nama Ayah</label>

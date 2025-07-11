@@ -21,21 +21,21 @@
               <div class="mb-4 row align-items-center">
                 <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">NIK</label>
                 <div class="col-sm-9">
-                  <input type="number" name="tch_nik" value="{{$teacher->tch_nik}}" class="form-control" id="exampleInputText1" placeholder="" required oninvalid="this.setCustomValidity('NIK Wajib Diisi')" 
+                  <input type="number" name="std_nik" value="{{$student->std_nik}}" class="form-control" id="exampleInputText1" placeholder="" required oninvalid="this.setCustomValidity('NIK Wajib Diisi')" 
                   onchange="this.setCustomValidity('')">
                 </div>
-                @error('tch_nik')
+                @error('std_nik')
                   <div>error</div>
                 @enderror
               </div>
 
                 <div class="mb-4 row align-items-center">
-                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Nama</label>
+                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Nama Lengkap</label>
                     <div class="col-sm-9">
-                      <input type="text" name="tch_name" value="{{$teacher->tch_name}}" class="form-control" id="exampleInputText1" placeholder="" required oninvalid="this.setCustomValidity('Nama Wajib Diisi')" 
+                      <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="exampleInputText1" placeholder="" required oninvalid="this.setCustomValidity('Nama Wajib Diisi')" 
                       onchange="this.setCustomValidity('')">
                     </div>
-                    @error('tch_name')
+                    @error('name')
                       <div>error</div>
                     @enderror
                   </div>
@@ -43,7 +43,7 @@
                 <div class="mb-4 row align-items-center">
                   <label for="exampleInputText1" class="form-label col-sm-3 col-form-label">Jenis Kelamin</label>
                   <div class="col-sm-9">
-                    <select class ="form-select mr-sm-2" id="inLineFormCustomSelect" name="tch_gender"  oninvalid="this.setCustomValidity ('Jenis Kelamin Wajib Diisi')"
+                    <select class ="form-select mr-sm-2" id="inLineFormCustomSelect" name="std_gender"  oninvalid="this.setCustomValidity ('Jenis Kelamin Wajib Diisi')"
                     onchange="this.setCustomValidity('')" required>
                     @if ($teacher->tch_gender == "Perempuan")
                     <option value="Perempuan">Perempuan</option>
@@ -54,7 +54,7 @@
                     @endif
                     </select>
                   </div>
-                  @error('tch_gender')
+                  @error('std_gender')
                     <div>error</div>
                   @enderror
                 </div>
@@ -62,10 +62,10 @@
                 <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Tempat Lahir</label>
                     <div class="col-sm-9">
-                      <input type="text" name="tch_place_of_birth" value="{{$teacher->tch_place_of_birth}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tempat Lahir Kelas Wajib Diisi')" 
+                      <input type="text" name="std_birth_place" value="{{ $student->std_birth_place }}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tempat Lahir Kelas Wajib Diisi')" 
                       onchange="this.setCustomValidity('')">
                     </div>
-                    @error('tch_place_of_birth')
+                    @error('std_birth_place')
                       <div>error</div>
                     @enderror
                   </div>
@@ -73,10 +73,32 @@
                   <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Tanggal Lahir</label>
                     <div class="col-sm-9">
-                      <input type="date" name="tch_date_of_birth" value="{{$teacher->tch_date_of_birth}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tanggal Lahir Wajib Diisi')" 
+                      <input type="date" name="std_birth_date" value="{{ $student->std_birth_date }}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tanggal Lahir Wajib Diisi')" 
                       onchange="this.setCustomValidity('')">
                     </div>
-                    @error('tch_date_of_birth')
+                    @error('std_birth_date')
+                      <div>error</div>
+                    @enderror
+                  </div>
+
+                   <div class="mb-4 row align-items-center">
+                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Anak Ke</label>
+                    <div class="col-sm-9">
+                      <input type="text" name="std_child_to" value="{{ $student->std_child_to }}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Alamat Wajib Diisi')" 
+                      onchange="this.setCustomValidity('')">
+                    </div>
+                    @error('std_child_to')
+                      <div>error</div>
+                    @enderror
+                  </div>
+
+                  <div class="mb-4 row align-items-center">
+                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Jumlah Saudara</label>
+                    <div class="col-sm-9">
+                      <input type="text" name="std_number_of_siblings" value="{{ $student->std_number_of_siblings }}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Alamat Wajib Diisi')" 
+                      onchange="this.setCustomValidity('')">
+                    </div>
+                    @error('std_number_of_siblings')
                       <div>error</div>
                     @enderror
                   </div>
@@ -84,13 +106,36 @@
                   <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Alamat</label>
                     <div class="col-sm-9">
-                      <input type="text" name="tch_address" value="{{$teacher->tch_address}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Alamat Wajib Diisi')" 
+                      <input type="text" name="std_address" value="{{ $student->std_address }}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Alamat Wajib Diisi')" 
                       onchange="this.setCustomValidity('')">
                     </div>
-                    @error('tch_address')
+                    @error('std_address')
                       <div>error</div>
                     @enderror
                   </div>
+
+                    <div class="mb-4 row align-items-center">
+                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Alamat</label>
+                    <div class="col-sm-9">
+                      <input type="text" name="std_address" value="{{ $student->std_address }}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Alamat Wajib Diisi')" 
+                      onchange="this.setCustomValidity('')">
+                    </div>
+                    @error('std_address')
+                      <div>error</div>
+                    @enderror
+                  </div>
+
+                  <div class="mb-4 row align-items-center">
+                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Alamat</label>
+                    <div class="col-sm-9">
+                      <input type="text" name="std_address" value="{{ $student->std_address }}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Alamat Wajib Diisi')" 
+                      onchange="this.setCustomValidity('')">
+                    </div>
+                    @error('std_address')
+                      <div>error</div>
+                    @enderror
+                  </div>
+
 
                   <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Telpon</label>

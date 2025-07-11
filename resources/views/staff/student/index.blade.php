@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class="mb-5 position-relative">
                     <h4 class="card-title mb-0">Daftar Siswa</h4>
-                    <a href="/staff/student/create" class="btn btn-primary position-absolute top-0 end-0">Tambah Siswa</a>
+                    {{-- <a href="/staff/student/create" class="btn btn-primary position-absolute top-0 end-0">Tambah Siswa</a> --}}
                 </div>
                 <p class="card-subtitle mb-3">
                     
@@ -26,9 +26,9 @@
                             <!-- start row -->
                             <tr>
                                 <th width="10%">No</th>
-                                <th>Nama</th>
                                 <th>NIK</th>
-                                <th>Kelas</th>
+                                <th>Nama</th>
+                                <th>Jenis Kelamin</th>
                                 <th>Alamat</th>
                                 <th>Aksi</th>
                             </tr>
@@ -41,8 +41,9 @@
                                 
                                 <td>{{$no+1}}</td>
                                 <td>{{$student->std_nik}}</td>
-                                <td>{{$student->std_name}}</td>
-                                <td>{{$student->classes->cls_level}} {{$student->classes->cls_number}}</td>
+                                <td>{{$student->user->name ?? '-' }}</td>
+                                <td>{{$student->std_gender}}</td>
+                                {{-- <td>{{$student->classes->cls_level}} {{$student->classes->cls_number}}</td> --}}
                                 <td>{{$student->std_address}}</td>
                              
                                
@@ -64,9 +65,9 @@
 
                             <tr>
                                 <th width="10%">No</th>
-                                <th>Nama</th>
                                 <th>NIK</th>
-                                <th>Kelas</th>
+                                <th>Nama</th>
+                                <th>Jenis Kelamin</th>
                                 <th>Alamat</th>
                                 <th>Aksi</th>
                             </tr>

@@ -30,9 +30,9 @@
                                 <th>Kelas</th>
                                 <th>Mata Pelajaran</th>
                                 <th>Guru</th>
-                                <th>Semester</th>
                                 <th>Jam Mulai</th>
                                 <th>Jam Selesai</th>
+                                <th>Semester</th>
                                 <th>Aksi</th>
                             </tr>
                             <!-- end row -->
@@ -47,9 +47,9 @@
                                 <td>{{$Schedule->classes->cls_level}} {{$Schedule->classes->cls_number}}</td>
                                 <td>{{$Schedule->subject->sbj_name}}</td>
                                 <td>{{$Schedule->teacher->tch_name}}</td>
-                                <td>{{$Schedule->semester->smt_semester}}</td>
                                 <td>{{$Schedule->sch_start_time}}</td>
                                 <td>{{$Schedule->sch_end_time}}</td>
+                                <td>{{$Schedule->semester->smt_semester}}|{{$Schedule->semester->smt_school_year}}</td>
                                 <td>
                                      <a href="/staff/schedule/{{$Schedule->sch_id}}/edit" class="btn btn-primary">Edit</a>
                                      <a href="/staff/schedule/{{$Schedule->sch_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
@@ -73,9 +73,9 @@
                                 <th>Kelas</th>
                                 <th>Mata Pelajaran</th>
                                 <th>Guru</th>
-                                <th>Semester</th>
                                 <th>Jam Mulai</th>
                                 <th>Jam Selesai</th>
+                                <th>Semester</th>
                                 <th>Aksi</th>
                             </tr>
                             <!-- end row -->

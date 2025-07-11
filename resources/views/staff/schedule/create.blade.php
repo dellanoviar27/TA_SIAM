@@ -81,21 +81,6 @@
                   </div>
               </div>
 
-              <div class="mb-4 row align-items-center">
-                <label for="Select" class="form-label col-sm-3 col-form-label">Semester</label>
-                <div class="col-sm-9">
-                <select id="Select" name="smt_id" class="form-control" required>
-                <option hidden  value="">Pilih Semester</option>
-                @foreach ($semester as $semester)
-                  <option value="{{ $semester->smt_id }}">{{ $semester->smt_semester}}</option>
-                @endforeach
-                </select>
-                @error('sch_semester_id')
-                    <div id="sch_id" class="form-text">{{ $message }}</div>
-                @enderror
-                </div>
-            </div>
-
                 <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Jam Mulai</label>
                     <div class="col-sm-9">
@@ -117,6 +102,21 @@
                       <div>error</div>
                     @enderror
                   </div>
+
+                <div class="mb-4 row align-items-center">
+                <label for="Select" class="form-label col-sm-3 col-form-label">Semester</label>
+                <div class="col-sm-9">
+                <select id="Select" name="smt_id" class="form-control" required>
+                <option hidden  value="">Pilih Semester</option>
+                @foreach ($semester as $semester)
+                  <option value="{{ $semester->smt_id }}">{{ $semester->smt_semester}}|{{ $semester->smt_school_year}}</option>
+                @endforeach
+                </select>
+                @error('sch_semester_id')
+                    <div id="sch_id" class="form-text">{{ $message }}</div>
+                @enderror
+                </div>
+            </div>
                 
                 <div class="row">
                   <div class="col-sm-3"></div>

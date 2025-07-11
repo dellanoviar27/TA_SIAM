@@ -22,8 +22,9 @@ return new class extends Migration
             $table->string('grd_kaifiyat');
             $table->string('grd_adab');
             $table->string('grd_predicate');
-            $table->string('grd_description');
-            $table->unsignedBigInteger('grd_presences_id');
+            $table->string('grd_sick');
+            $table->string('grd_permission');
+            $table->string('grd_absence');
             $table->unsignedBigInteger('grd_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('grd_deleted_by')->unsigned()->nullable();
             $table->unsignedBigInteger('grd_updated_by')->unsigned()->nullable();
@@ -40,7 +41,6 @@ return new class extends Migration
             $table->foreign('grd_semester_id')->references('smt_id')->on('semesters')->onDelete('cascade');
             $table->foreign('grd_subject_id')->references('sbj_id')->on('subjects')->onDelete('cascade');
             $table->foreign('grd_teacher_id')->references('tch_id')->on('teachers')->onDelete('cascade');
-            $table->foreign('grd_presences_id')->references('prs_id')->on('presences')->onDelete('cascade');
         });
     }
 

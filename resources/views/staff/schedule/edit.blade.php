@@ -61,16 +61,6 @@
                   @enderror
                 </div>
 
-                {{-- <div class="mb-4 row align-items-center">
-                  <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Kelas</label>
-                  <div class="col-sm-9">
-                    <input type="text" name="sch_class_id" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Kelas Wajib Diisi')" 
-                    onchange="this.setCustomValidity('')">
-                  </div>
-                  @error('sch_class_id')
-                    <div>error</div>
-                  @enderror
-                </div> --}}
 
                 <div class="mb-4 row align-items-center">
                   <label for="Select" class="form-label col-sm-3 col-form-label">Kelas</label>
@@ -91,7 +81,6 @@
                   <label for="Select" class="form-label col-sm-3 col-form-label">Mata Pelajaran</label>
                   <div class="col-sm-9">
                   <select id="Select" name="sbj_id" class="form-control" required>
-                  {{-- <option hidden  value="{{$editSchedule->sch_subject_id}}">{{$editSchedule->subject->sbj_name_subject}}</option> --}}
                   <option hidden  value="{{$editSchedule->subject->sbj_id}}">{{$editSchedule->subject->sbj_name}}</option>
                   @foreach ($Subject as  $Subject)
                     <option value="{{$Subject->sbj_id}}">{{$Subject->sbj_name}}</option>
@@ -118,21 +107,6 @@
                 </div>
             </div>
 
-            <div class="mb-4 row align-items-center">
-              <label for="Select" class="form-label col-sm-3 col-form-label">Semester</label>
-              <div class="col-sm-9">
-              <select id="Select" name="tch_id" class="form-control" required>
-              <option   value="{{$editSchedule->semester->smt_id}}">{{$editSchedule->semester->smt_name}}</option>
-              @foreach ($semester as $Semester)
-                <option value="{{$Semester->smt_id}}">{{$Semester->smt_name}}</option>
-              @endforeach
-              </select>
-              @error('sch_semester_id')
-                  <div id="sch_id" class="form-text">{{ $message }}</div>
-              @enderror
-              </div>
-          </div>
-
                 <div class="mb-4 row align-items-center">
                   <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Jam Mulai</label>
                   <div class="col-sm-9">
@@ -154,6 +128,21 @@
                     <div>error</div>
                   @enderror
                 </div>
+
+                 <div class="mb-4 row align-items-center">
+              <label for="Select" class="form-label col-sm-3 col-form-label">Semester</label>
+              <div class="col-sm-9">
+              <select id="Select" name="tch_id" class="form-control" required>
+              <option   value="{{$editSchedule->semester->smt_id}}">{{$editSchedule->semester->smt_name}}</option>
+              @foreach ($semester as $Semester)
+                <option value="{{$Semester->smt_id}}">{{$Semester->smt_name}}|{{$Semester->smt_school_year}}</option>
+              @endforeach
+              </select>
+              @error('sch_semester_id')
+                  <div id="sch_id" class="form-text">{{ $message }}</div>
+              @enderror
+              </div>
+          </div>
                 
                 <div class="row">
                   <div class="col-sm-3"></div>

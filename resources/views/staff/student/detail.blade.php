@@ -1,329 +1,125 @@
-@extends('staff.master')
-
-@push('link')
-    <link rel="stylesheet" href="{{ asset('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
-@endpush
+@extends('staff.master_student')
 
 @section('title')
-    SIAM Al-Mu'min | Detail Siswa
+    Detail Pendaftaran Siswa
 @endsection
 
 @section('content')
-
-<div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-    <div class="card-body px-4 py-3">
-      <div class="row align-items-center">
-        <div class="col-9">
-          <h4 class="fw-semibold mb-8">Detail Siswa</h4>
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <a class="text-muted text-decoration-none" href="../main/index.html"></a>
-              </li>
-           
-            </ol>
-          </nav>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-  <div class="shop-detail">
-    <div class="card shadow-none border">
-      <div class="card-body p-4">
-        <div class="row">
-          <div class="col-lg-6">
-            <div id="sync1" class="owl-carousel owl-theme">
-              <div class="item rounded-4 overflow-hidden">
-                <img src="{{ asset('storage/'.$student->std_pictures)}}" alt="modernize-img" class="img-fluid">
-              </div>
-              
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="px-4 py-3 border-bottom">
+                <h4 class="card-title mb-0">Detail Data Calon Siswa</h4>
             </div>
-          </div>
+            <div class="card-body">
+                
+                {{-- DATA SISWA --}}
+                <h5 class="mb-3">Data Siswa</h5>
+                <dl class="row mb-4">
+                    <dt class="col-sm-3">NIK</dt>
+                    <dd class="col-sm-9">: {{ $student->std_nik }}</dd>
 
-          <div class="col-lg-6">
-            <div class="shop-content">
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>NIK</h4>
-              <h6 class="mb-0 fs-4">{{$student->std_nik}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0"> 
-              </div>
+                    <dt class="col-sm-3">Nama Lengkap</dt>
+                    <dd class="col-sm-9">: {{ $student->user->name ?? '-' }}</dd>
 
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>Nama</h4>
-              <h6 class="mb-0 fs-4">{{$student->std_name}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>
+                    <dt class="col-sm-3">Jenis Kelamin</dt>
+                    <dd class="col-sm-9">: {{ $student->std_gender }}</dd>
 
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>Jenis Kelamin</h4>
-              <h6 class="mb-0 fs-4">{{$student->std_gender}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>
+                    <dt class="col-sm-3">Tempat, Tanggal Lahir</dt>
+                    <dd class="col-sm-9">: {{ $student->std_birth_place }}, {{ $student->std_birth_date }}</dd>
 
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>Tempat Lahir</h4>
-              <h6 class="mb-0 fs-4">{{$student->std_place_of_birth}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>
+                    <dt class="col-sm-3">Anak Ke</dt>
+                    <dd class="col-sm-9">: {{ $student->std_child_to }}</dd>
 
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>Tanggal Lahir</h4>
-              <h6 class="mb-0 fs-4">{{$student->std_date_of_birth}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>
+                    <dt class="col-sm-3">Jumlah Saudara</dt>
+                    <dd class="col-sm-9">: {{ $student->std_number_of_siblings }}</dd>
 
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>Anak Ke</h4>
-              <h6 class="mb-0 fs-4">{{$student->std_child_to}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>
+                    <dt class="col-sm-3">Alamat</dt>
+                    <dd class="col-sm-9">: {{ $student->std_address }}</dd>
 
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>Jumlah Saudara</h4>
-              <h6 class="mb-0 fs-4">{{$student->std_number_of_siblings}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>
+                    <dt class="col-sm-3">Nama Sekolah</dt>
+                    <dd class="col-sm-9">: {{ $student->std_school }}</dd>
 
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>Tanggal Masuk</h4>
-              <h6 class="mb-0 fs-4">{{$student->std_date_registration}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>
+                    <dt class="col-sm-3">Tingkatan Sekolah</dt>
+                    <dd class="col-sm-9">: {{ $student->std_formal_level }}</dd>
 
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>Nama Sekolah</h4>
-              <h6 class="mb-0 fs-4">{{$student->std_school}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>
+                    @if ($student->std_formal_grade)
+                        <dt class="col-sm-3">Kelas Sekolah</dt>
+                        <dd class="col-sm-9">: {{ $student->std_formal_grade }}</dd>
+                    @endif
 
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>Kelas</h4>
-              <h6 class="mb-0 fs-4">{{$student->std_class_id}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>
+                    <dt class="col-sm-3">NISN</dt>
+                    <dd class="col-sm-9">: {{ $student->std_nisn }}</dd>
+                </dl>
 
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>NISN</h4>
-              <h6 class="mb-0 fs-4">{{$student->std_nisn}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>
+                {{-- DATA AYAH --}}
+                <h5 class="mb-3">Data Ayah</h5>
+                <dl class="row mb-4">
+                    <dt class="col-sm-3">Nama Ayah</dt>
+                    <dd class="col-sm-9">: {{ $student->parent->prt_father ?? '-' }}</dd>
 
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>Nama Ayah</h4>
-              <h6 class="mb-0 fs-4">{{$student->std_father}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>
+                    <dt class="col-sm-3">Status Ayah</dt>
+                    <dd class="col-sm-9">: {{ $student->parent->prt_status_father ?? '-' }}</dd>
 
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>status Ayah</h4>
-              <h6 class="mb-0 fs-4">{{$student->std_status_father}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>
+                    <dt class="col-sm-3">Alamat Ayah</dt>
+                    <dd class="col-sm-9">: {{ $student->parent->prt_address_father ?? '-' }}</dd>
 
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge text-bg-success fs-2 fw-semibold"></span>
-                <span class="fs-2"></span>
-              </div>
-              <h4>Alamat Ayah</h4>
-              <h6 class="mb-0 fs-4">{{$student->std_address_father}}</h6>
-              <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-                <ul class="list-unstyled d-flex align-items-center mb-0">
-              </div>    
-            
+                    <dt class="col-sm-3">Pekerjaan Ayah</dt>
+                    <dd class="col-sm-9">: {{ $student->parent->prt_job_father ?? '-' }}</dd>
 
-          <div class="d-flex align-items-center gap-2 mb-2">
-            <span class="badge text-bg-success fs-2 fw-semibold"></span>
-            <span class="fs-2"></span>
-          </div>
-          <h4>Pekerjaan Ayah</h4>
-          <h6 class="mb-0 fs-4">{{$student->std_work_father}}</h6>
-          <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-            <ul class="list-unstyled d-flex align-items-center mb-0">
-          </div>
+                    <dt class="col-sm-3">Penghasilan Ayah</dt>
+                    <dd class="col-sm-9">: {{ $student->parent->prt_income_father ?? '-' }}</dd>
+                </dl>
 
-          <div class="d-flex align-items-center gap-2 mb-2">
-            <span class="badge text-bg-success fs-2 fw-semibold"></span>
-            <span class="fs-2"></span>
-          </div>
-          <h4>Penghasilan Ayah</h4>
-          <h6 class="mb-0 fs-4">{{$student->std_income_father}}</h6>
-          <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-            <ul class="list-unstyled d-flex align-items-center mb-0">
-          </div>    
-       
+                {{-- DATA IBU --}}
+                <h5 class="mb-3">Data Ibu</h5>
+                <dl class="row mb-4">
+                    <dt class="col-sm-3">Nama Ibu</dt>
+                    <dd class="col-sm-9">: {{ $student->parent->prt_mother ?? '-' }}</dd>
 
-         <div class="d-flex align-items-center gap-2 mb-2">
-            <span class="badge text-bg-success fs-2 fw-semibold"></span>
-            <span class="fs-2"></span>
-         </div>
-         <h4>Nama Ibu</h4>
-         <h6 class="mb-0 fs-4">{{$student->std_mother}}</h6>
-         <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-           <ul class="list-unstyled d-flex align-items-center mb-0">
-         </div>
-         
-         <div class="d-flex align-items-center gap-2 mb-2">
-            <span class="badge text-bg-success fs-2 fw-semibold"></span>
-            <span class="fs-2"></span>
-         </div>
-         <h4>Status Ibu</h4>
-         <h6 class="mb-0 fs-4">{{$student->std_status_mother}}</h6>
-         <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-           <ul class="list-unstyled d-flex align-items-center mb-0">
-         </div>
+                    <dt class="col-sm-3">Status Ibu</dt>
+                    <dd class="col-sm-9">: {{ $student->parent->prt_status_mother ?? '-' }}</dd>
 
-         <div class="d-flex align-items-center gap-2 mb-2">
-            <span class="badge text-bg-success fs-2 fw-semibold"></span>
-            <span class="fs-2"></span>
-         </div>
-         <h4>Alamat Ibu</h4>
-         <h6 class="mb-0 fs-4">{{$student->std_address_mother}}</h6>
-         <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-           <ul class="list-unstyled d-flex align-items-center mb-0">
-         </div>
+                    <dt class="col-sm-3">Alamat Ibu</dt>
+                    <dd class="col-sm-9">: {{ $student->parent->prt_address_mother ?? '-' }}</dd>
 
-         <div class="d-flex align-items-center gap-2 mb-2">
-            <span class="badge text-bg-success fs-2 fw-semibold"></span>
-            <span class="fs-2"></span>
-         </div>
-         <h4>Pekerjaan Ibu</h4>
-         <h6 class="mb-0 fs-4">{{$student->std_work_mother}}</h6>
-         <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-           <ul class="list-unstyled d-flex align-items-center mb-0">
-         </div>
+                    <dt class="col-sm-3">Pekerjaan Ibu</dt>
+                    <dd class="col-sm-9">: {{ $student->parent->prt_job_mother ?? '-' }}</dd>
 
-         <div class="d-flex align-items-center gap-2 mb-2">
-            <span class="badge text-bg-success fs-2 fw-semibold"></span>
-            <span class="fs-2"></span>
-         </div>
-         <h4>Penghasilan Ibu</h4>
-         <h6 class="mb-0 fs-4">{{$student->std_income_mother}}</h6>
-         <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-           <ul class="list-unstyled d-flex align-items-center mb-0">
-         </div>
+                    <dt class="col-sm-3">Penghasilan Ibu</dt>
+                    <dd class="col-sm-9">: {{ $student->parent->prt_income_mother ?? '-' }}</dd>
+                </dl>
 
-         <div class="d-flex align-items-center gap-2 mb-2">
-            <span class="badge text-bg-success fs-2 fw-semibold"></span>
-            <span class="fs-2"></span>
-         </div>
-         <h4>Nama Wali</h4>
-         <h6 class="mb-0 fs-4">{{$student->std_guardian}}</h6>
-         <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-           <ul class="list-unstyled d-flex align-items-center mb-0">
-         </div>
+                {{-- DATA WALI --}}
+                <h5 class="mb-3">Data Wali</h5>
+                <dl class="row mb-4">
+                    <dt class="col-sm-3">Nama Wali</dt>
+                    <dd class="col-sm-9">: {{ $student->parent->prt_guardian ?? '-' }}</dd>
 
-         <div class="d-flex align-items-center gap-2 mb-2">
-            <span class="badge text-bg-success fs-2 fw-semibold"></span>
-            <span class="fs-2"></span>
-         </div>
-         <h4>Alamat Wali</h4>
-         <h6 class="mb-0 fs-4">{{$student->std_work_guardian}}</h6>
-         <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-           <ul class="list-unstyled d-flex align-items-center mb-0">
-         </div>
+                    <dt class="col-sm-3">Alamat Wali</dt>
+                    <dd class="col-sm-9">: {{ $student->parent->prt_address_guardian ?? '-' }}</dd>
 
-         <div class="d-flex align-items-center gap-2 mb-2">
-            <span class="badge text-bg-success fs-2 fw-semibold"></span>
-            <span class="fs-2"></span>
-         </div>
-         <h4>Pekerjaan Wali</h4>
-         <h6 class="mb-0 fs-4">{{$student->std_work_guardian}}</h6>
-         <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-           <ul class="list-unstyled d-flex align-items-center mb-0">
-         </div>
+                    <dt class="col-sm-3">Pekerjaan Wali</dt>
+                    <dd class="col-sm-9">: {{ $student->parent->prt_job_guardian ?? '-' }}</dd>
 
-         <div class="d-flex align-items-center gap-2 mb-2">
-            <span class="badge text-bg-success fs-2 fw-semibold"></span>
-            <span class="fs-2"></span>
-         </div>
-         <h4>Penghasilan Wali</h4>
-         <h6 class="mb-0 fs-4">{{$student->std_income_guardian}}</h6>
-         <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-           <ul class="list-unstyled d-flex align-items-center mb-0">
-         </div>
+                    <dt class="col-sm-3">Penghasilan Wali</dt>
+                    <dd class="col-sm-9">: {{ $student->parent->prt_income_guardian ?? '-' }}</dd>
+                </dl>
 
-         <div class="d-flex align-items-center gap-2 mb-2">
-            <span class="badge text-bg-success fs-2 fw-semibold"></span>
-            <span class="fs-2"></span>
-         </div>
-         <h4>No. HP Orangtua</h4>
-         <h6 class="mb-0 fs-4">{{$student->std_parent_phone}}</h6>
-         <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
-           <ul class="list-unstyled d-flex align-items-center mb-0">
-         </div>
-         
-         </div>
-    </div> 
+                {{-- KONTAK --}}
+                <h5 class="mb-3">Kontak</h5>
+                <dl class="row mb-4">
+                    <dt class="col-sm-3">No. HP Orangtua / Wali</dt>
+                    <dd class="col-sm-9">: {{ $student->parent->prt_parent_phone ?? '-' }}</dd>
+                </dl>
+
+                {{-- TOMBOL KEMBALI --}}
+                <div class="text-end">
+                    <a href="{{ route('approve_student.index') }}" class="btn btn-secondary">Kembali</a>
+                </div>
+
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  @endsection
-
-  @push('script')
-<script src="{{asset('assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
-
-<script src="{{asset('assets/js/datatable/datatable-advanced.init.js')}}"></script>
-@endpush
+</div>
+@endsection

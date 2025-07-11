@@ -40,10 +40,10 @@
                   <select id="Select" name="tch_id" class="form-control" required>
                   <option hidden  value="">Pilih Guru</option>
                   @foreach ($teacher as  $teacher)
-                    <option value="{{ $teacher->tch_id }}">{{ $teacher->tch_name}}</option>
+                    <option value="{{ $teacher->tch_id }}">{{ $teacher->user->name ?? '-' }}</option>
                   @endforeach
                   </select>
-                  @error('hrt_teacher_id')
+                  @error('hrt_user_id')
                       <div id="hrt_id" class="form-text">{{ $message }}</div>
                   @enderror
                   </div>

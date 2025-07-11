@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Daftar Staf
+    SIAM Al-Mu'min | Daftar Jadwal Pelajaran
 @endsection
 
 @section('content')
@@ -14,8 +14,8 @@
         <div class="card">
             <div class="card-body">
                 <div class="mb-5 position-relative">
-                    <h4 class="card-title mb-0">Daftar Staf</h4>
-                    <a href="/staff/management/create" class="btn btn-primary position-absolute top-0 end-0">Tambah Siswa</a>
+                    <h4 class="card-title mb-0">Daftar Jadwal Pelajaran</h4>
+                    {{-- <a href="/staff/schedule/create" class="btn btn-primary position-absolute top-0 end-0">Tambah Jadwal Pelajaran</a> --}}
                 </div>
                 <p class="card-subtitle mb-3">
                     
@@ -26,32 +26,36 @@
                             <!-- start row -->
                             <tr>
                                 <th width="10%">No</th>
-                                <th>NIK</th>
-                                <th>Nama</th>
-                                <th>Alamat</th>
-                                <th>No. HP</th>
-                                <th>Aksi</th>
+                                <th>Hari</th>
+                                <th>Kelas</th>
+                                <th>Mata Pelajaran</th>
+                                <th>Guru</th>
+                                <th>Jam Mulai</th>
+                                <th>Jam Selesai</th>
+                                <th>Semester</th>
                             </tr>
                             <!-- end row -->
                         </thead>
                         <tbody>
                             <!-- start row -->
-                            @foreach ($staff as $no=>$staff)
+                            @foreach ($schedule as $no=>$Schedule)
                             <tr>
                                 
                                 <td>{{$no+1}}</td>
-                                <td>{{$staff->stf_nik}}</td>
-                                <td>{{$staff->stf_name}}</td>
-                                <td>{{$staff->stf_address}}</td>
-                                <td>{{$staff->stf_phone}}</td>
-                             
-                               
-                               
-                                <td>
-                                     <a href="/staff/management/{{$staff->stf_id}}/detail" class="btn btn-primary">Detail</a>
-                                     <a href="/staff/management/{{$staff->stf_id}}/edit" class="btn btn-primary">Edit</a>
-                                     <a href="/staff/management/{{$staff->stf_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
-                                </td>
+                                <td>{{$Schedule->sch_day}}</td>
+                                <td>{{$Schedule->classes->cls_level}} {{$Schedule->classes->cls_number}}</td>
+                                <td>{{$Schedule->subject->sbj_name}}</td>
+                                <td>{{$Schedule->teacher->tch_name}}</td>
+                                <td>{{$Schedule->sch_start_time}}</td>
+                                <td>{{$Schedule->sch_end_time}}</td>
+                                <td>{{$Schedule->semester->smt_semester}}</td>
+                                {{-- <td>
+                                     <a href="/staff/schedule/{{$Schedule->sch_id}}/edit" class="btn btn-primary">Edit</a>
+                                     <a href="/staff/schedule/{{$Schedule->sch_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
+
+                                </td> --}}
+
+
                                 
                             </tr>
                             @endforeach
@@ -64,11 +68,13 @@
 
                             <tr>
                                 <th width="10%">No</th>
-                                <th>NIK</th>
-                                <th>Nama</th>
-                                <th>Alamat</th>
-                                <th>No. HP</th>
-                                <th>Aksi</th>
+                                <th>Hari</th>
+                                <th>Kelas</th>
+                                <th>Mata Pelajaran</th>
+                                <th>Guru</th>
+                                <th>Jam Mulai</th>
+                                <th>Jam Selesai</th>
+                                <th>Semester</th>
                             </tr>
                             <!-- end row -->
                         </tfoot>

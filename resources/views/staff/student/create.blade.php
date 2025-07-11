@@ -32,10 +32,10 @@
               <div class="mb-4 row align-items-center">
                 <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Nama Lengkap</label>
                 <div class="col-sm-9">
-                  <input type="text" name="std_name" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Nama Wajib Diisi')" 
+                  <input type="text" name="name" class="form-control" value="{{ old('name') }}" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Nama Wajib Diisi')" 
                   onchange="this.setCustomValidity('')">
                 </div>
-                @error('std_name')
+                @error('name')
                   <div>error</div>
                 @enderror
               </div>
@@ -132,7 +132,43 @@
                     @enderror
                   </div>
 
-                  <div class="mb-4 row align-items-center">
+                    <div class="mb-4 row align-items-center">
+                    <label for="formalLevel" class="form-label col-sm-3 col-form-label">Tingkatan Sekolah</label>
+                    <div class="col-sm-9">
+                      <select name="std_formal_level" id="formalLevel" class="form-control" required 
+                        oninvalid="this.setCustomValidity('Tingkatan Sekolah Wajib Diisi')" 
+                        onchange="handleFormalLevelChange(); this.setCustomValidity('')">
+                        <option hidden value="">Pilih Tingkatan</option>
+                        <option value="Belum Sekolah">Belum Sekolah</option>
+                        <option value="TK">TK</option>
+                        <option value="SD">SD</option>
+                        <option value="SMP">SMP</option>
+                        <option value="SMA">SMA</option>
+                        <option value="Lulus SMA">Lulus SMA</option>
+                        <option value="Kuliah">Kuliah</option>
+                      </select>
+                    </div>
+                    @error('std_formal_level')
+                      <div class="form-text text-danger">{{ $message }}</div>
+                    @enderror
+                  </div>
+
+                  <div class="mb-4 row align-items-center" id="formalGradeWrapper">
+                    <label for="formalGrade" class="form-label col-sm-3 col-form-label">Kelas Sekolah</label>
+                    <div class="col-sm-9">
+                      <select name="std_formal_grade" id="formalGrade" class="form-control">
+                        <option hidden value="">Pilih Kelas</option>
+                        @for ($i = 1; $i <= 12; $i++)
+                          <option value="{{ $i }}">{{ $i }}</option>
+                        @endfor
+                      </select>
+                    </div>
+                    @error('std_formal_grade')
+                      <div class="form-text text-danger">{{ $message }}</div>
+                    @enderror
+                  </div>
+
+                  {{-- <div class="mb-4 row align-items-center">
                     <label for="Select" class="form-label col-sm-3 col-form-label">Kelas</label>
                     <div class="col-sm-9">
                     <select id="Select" name="cls_id" class="form-control" required>
@@ -145,7 +181,7 @@
                         <div id="std_id" class="form-text">{{ $message }}</div>
                     @enderror
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="mb-4 row align-items-center">
                   <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">NISN</label>

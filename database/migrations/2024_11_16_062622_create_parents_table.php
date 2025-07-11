@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('parents', function (Blueprint $table) {
             $table->bigIncrements('prt_id');
+            $table->unsignedBigInteger('prt_user_id')->nullable();
             $table->string('prt_father');
             $table->string('prt_status_father');
             $table->string('prt_address_father');
@@ -46,6 +47,7 @@ return new class extends Migration
              $table->foreign('prt_created_by')->references('usr_id')->on('users')->onDelete('cascade');
              $table->foreign('prt_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
              $table->foreign('prt_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
+             $table->foreign('prt_user_id')->references('usr_id')->on('users')->onDelete('cascade');
         });
     }
 

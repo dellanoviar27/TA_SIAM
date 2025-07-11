@@ -84,11 +84,11 @@
         </section>
 
         <!-- Donasi -->
-        <section class="bg-white rounded-lg shadow p-6 mb-6">
+        {{-- <section class="bg-white rounded-lg shadow p-6 mb-6">
             <h2 class="text-2xl font-semibold mb-4">Donasi</h2>
             <p>Bagi yang ingin berdonasi, silakan transfer ke rekening berikut:</p>
             <p><strong>Bank BRI</strong> - 1234-5678-9101 a.n Madrasah Diniyah Takmiliyah Al-Mu'min</p>
-        </section>
+        </section> --}}
 
         <!-- Galeri -->
         <section class="bg-white rounded-lg shadow p-6 mb-6">
@@ -107,8 +107,8 @@
         <section class="bg-white rounded-lg shadow p-6 mb-6">
             <h2 class="text-2xl font-semibold mb-4">Informasi Kontak</h2>
             <p><strong>Alamat:</strong> Kp. Patrol No. 051 RT 02/04 Ds. Sukamukti Kec. Katapang Kab. Bandung 40921 Jawa Barat.</p>
-            <p><strong>Telepon:</strong> 0812-3456-7890</p>
-            <p><strong>Email:</strong> info@mdtalmu.com</p>
+            <p><strong>Telepon:</strong> 0895-6353-66394</p>
+            <p><strong>Email:</strong> mdtalmuminkatapangbdg@gmail.com</p>
         </section>
     </main>
 

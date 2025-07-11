@@ -15,7 +15,7 @@
     <div class="card-body px-4 py-3">
       <div class="row align-items-center">
         <div class="col-9">
-          <h4 class="fw-semibold mb-8">Detail Calon Siswa</h4>
+          <h4 class="fw-semibold mb-8">Detail Siswa</h4>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
@@ -139,7 +139,7 @@
                 <span class="fs-2"></span>
               </div>
               <h4>Kelas</h4>
-              <h6 class="mb-0 fs-4">{{$student->classes->cls_name ?? '-'}}</h6>
+              <h6 class="mb-0 fs-4">{{ $student->std_formal_level ? $student->std_formal_level . ' ' . $student->std_formal_grade : '-' }}</h6>
               <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
                 <ul class="list-unstyled d-flex align-items-center mb-0">
               </div>
@@ -159,7 +159,7 @@
                 <span class="fs-2"></span>
               </div>
               <h4>Nama Ayah</h4>
-              <h6 class="mb-0 fs-4">{{$parent->prt_father}}</h6>
+              <h6 class="mb-0 fs-4">{{$student->std_father}}</h6>
               <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
                 <ul class="list-unstyled d-flex align-items-center mb-0">
               </div>
@@ -169,7 +169,7 @@
                 <span class="fs-2"></span>
               </div>
               <h4>status Ayah</h4>
-              <h6 class="mb-0 fs-4">{{$parent->prt_status_father}}</h6>
+              <h6 class="mb-0 fs-4">{{$student->std_status_father}}</h6>
               <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
                 <ul class="list-unstyled d-flex align-items-center mb-0">
               </div>
@@ -179,7 +179,7 @@
                 <span class="fs-2"></span>
               </div>
               <h4>Alamat Ayah</h4>
-              <h6 class="mb-0 fs-4">{{$parent->prt_address_father}}</h6>
+              <h6 class="mb-0 fs-4">{{$student->std_address_father}}</h6>
               <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
                 <ul class="list-unstyled d-flex align-items-center mb-0">
               </div>    
@@ -190,7 +190,7 @@
             <span class="fs-2"></span>
           </div>
           <h4>Pekerjaan Ayah</h4>
-          <h6 class="mb-0 fs-4">{{$parent->prt_job_father}}</h6>
+          <h6 class="mb-0 fs-4">{{$student->std_work_father}}</h6>
           <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
             <ul class="list-unstyled d-flex align-items-center mb-0">
           </div>
@@ -200,7 +200,7 @@
             <span class="fs-2"></span>
           </div>
           <h4>Penghasilan Ayah</h4>
-          <h6 class="mb-0 fs-4">{{$parent->prt_income_father}}</h6>
+          <h6 class="mb-0 fs-4">{{$student->std_income_father}}</h6>
           <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
             <ul class="list-unstyled d-flex align-items-center mb-0">
           </div>    
@@ -211,7 +211,7 @@
             <span class="fs-2"></span>
          </div>
          <h4>Nama Ibu</h4>
-         <h6 class="mb-0 fs-4">{{$parent->prt_mother}}</h6>
+         <h6 class="mb-0 fs-4">{{$student->std_mother}}</h6>
          <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
            <ul class="list-unstyled d-flex align-items-center mb-0">
          </div>
@@ -221,7 +221,7 @@
             <span class="fs-2"></span>
          </div>
          <h4>Status Ibu</h4>
-         <h6 class="mb-0 fs-4">{{$parent->prt_status_mother}}</h6>
+         <h6 class="mb-0 fs-4">{{$student->std_status_mother}}</h6>
          <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
            <ul class="list-unstyled d-flex align-items-center mb-0">
          </div>
@@ -231,7 +231,7 @@
             <span class="fs-2"></span>
          </div>
          <h4>Alamat Ibu</h4>
-         <h6 class="mb-0 fs-4">{{$parent->prt_address_mother}}</h6>
+         <h6 class="mb-0 fs-4">{{$student->std_address_mother}}</h6>
          <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
            <ul class="list-unstyled d-flex align-items-center mb-0">
          </div>
@@ -241,7 +241,7 @@
             <span class="fs-2"></span>
          </div>
          <h4>Pekerjaan Ibu</h4>
-         <h6 class="mb-0 fs-4">{{$parent->prt_job_mother}}</h6>
+         <h6 class="mb-0 fs-4">{{$student->std_work_mother}}</h6>
          <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
            <ul class="list-unstyled d-flex align-items-center mb-0">
          </div>
@@ -251,7 +251,7 @@
             <span class="fs-2"></span>
          </div>
          <h4>Penghasilan Ibu</h4>
-         <h6 class="mb-0 fs-4">{{$parent->prt_income_mother}}</h6>
+         <h6 class="mb-0 fs-4">{{$student->std_income_mother}}</h6>
          <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
            <ul class="list-unstyled d-flex align-items-center mb-0">
          </div>
@@ -261,7 +261,7 @@
             <span class="fs-2"></span>
          </div>
          <h4>Nama Wali</h4>
-         <h6 class="mb-0 fs-4">{{$parent->prt_guardian}}</h6>
+         <h6 class="mb-0 fs-4">{{$student->std_guardian}}</h6>
          <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
            <ul class="list-unstyled d-flex align-items-center mb-0">
          </div>
@@ -271,7 +271,7 @@
             <span class="fs-2"></span>
          </div>
          <h4>Alamat Wali</h4>
-         <h6 class="mb-0 fs-4">{{$parent->prt_address_guardian}}</h6>
+         <h6 class="mb-0 fs-4">{{$student->std_work_guardian}}</h6>
          <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
            <ul class="list-unstyled d-flex align-items-center mb-0">
          </div>
@@ -281,7 +281,7 @@
             <span class="fs-2"></span>
          </div>
          <h4>Pekerjaan Wali</h4>
-         <h6 class="mb-0 fs-4">{{$parent->prt_job_guardian}}</h6>
+         <h6 class="mb-0 fs-4">{{$student->std_work_guardian}}</h6>
          <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
            <ul class="list-unstyled d-flex align-items-center mb-0">
          </div>
@@ -291,7 +291,7 @@
             <span class="fs-2"></span>
          </div>
          <h4>Penghasilan Wali</h4>
-         <h6 class="mb-0 fs-4">{{$parent->prt_income_guardian}}</h6>
+         <h6 class="mb-0 fs-4">{{$student->std_income_guardian}}</h6>
          <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
            <ul class="list-unstyled d-flex align-items-center mb-0">
          </div>
@@ -301,7 +301,7 @@
             <span class="fs-2"></span>
          </div>
          <h4>No. HP Orangtua</h4>
-         <h6 class="mb-0 fs-4">{{$parent->prt_parent_phone}}</h6>
+         <h6 class="mb-0 fs-4">{{$student->std_parent_phone}}</h6>
          <div class="d-flex align-items-center gap-8 pb-4 border-bottom">
            <ul class="list-unstyled d-flex align-items-center mb-0">
          </div>

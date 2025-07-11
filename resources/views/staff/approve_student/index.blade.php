@@ -34,14 +34,15 @@
                             @foreach ($approve_student as $no => $student)
                                 <tr>
                                     <td>{{ $no + 1 }}</td>
-                                    <td>{{ $student->std_name }}</td>
+                                    <td>{{ $student->user->name ?? '-' }}</td>
                                     <td>{{ $student->std_nisn }}</td>
                                     <td>{{ $student->std_school }}</td>
-                                    <td>{{ $student->classes->cls_level ?? '-' }}</td>
+                                    <td>{{ $student->std_formal_level ? $student->std_formal_level . ' ' . $student->std_formal_grade : '-' }}</td>
                                     <td>{{ ucfirst($student->std_status) }}</td>
+                                    
                                     <td>
+                                        <a href="{{ route('approve_student.verifikasi', $student->std_id) }}" class="btn btn-warning btn-sm">Verifikasi</a>
                                         <a href="/staff/student/{{$student->std_id}}/detail" class="btn btn-info btn-sm">Detail</a>
-                                        <a href="{{ route('approve_student.edit', $student->std_id) }}" class="btn btn-warning btn-sm">Verifikasi</a>
                                         <form action="{{ route('approve_student.destroy', $student->std_id) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')

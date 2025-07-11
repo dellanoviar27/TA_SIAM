@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Daftar Wali Kelas
+    SIAM Al-Mu'min | Daftar Guru
 @endsection
 
 @section('content')
@@ -14,66 +14,52 @@
         <div class="card">
             <div class="card-body">
                 <div class="mb-5 position-relative">
-                    <h4 class="card-title mb-0">Daftar Wali Kelas</h4>
-                    <a href="/staff/homeroom_teacher/create" class="btn btn-primary position-absolute top-0 end-0">Tambah Wali Kelas</a>
+                    <h4 class="card-title mb-0">Daftar Akun Guru</h4>
+                    <a href="/staff/teacher_account/create" class="btn btn-primary position-absolute top-0 end-0">Tambah Guru</a>
                 </div>
-                <p class="card-subtitle mb-3">
-                    
-                </p>
+
                 <div class="table-responsive">
                     <table id="file_export" class="table w-100 table-striped table-bordered display text-nowrap">
                         <thead>
-                            <!-- start row -->
                             <tr>
-                                <th width="10%">No</th>
-                                <th>Kelas</th>
-                                <th>Wali Kelas</th>
+                                <th width="5%">No</th>
+                                <th>NIK</th>
+                                <th>Nama</th>
+                                <th>Email</th>
                                 <th>Aksi</th>
                             </tr>
-                            <!-- end row -->
                         </thead>
                         <tbody>
-                            <!-- start row -->
-                            @foreach ($homeroom_teacher as $no=>$Homeroom_teacher)
-                            <tr>
-                                
-                                <td>{{$no+1}}</td>
-                                <td>{{$Homeroom_teacher->class->cls_level}} {{$Homeroom_teacher->class->cls_number}}</td>
-                               <td>{{ $Homeroom_teacher->teacher->user->name ?? '-' }}</td>
-                                <td>
-                                     <a href="/staff/homeroom_teacher/{{$Homeroom_teacher->hrt_id}}/edit" class="btn btn-primary">Edit</a>
-                                     <a href="/staff/homeroom_teacher/{{$Homeroom_teacher->hrt_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
-
-                                </td>
-
-
-                                
-                            </tr>
+                            @foreach ($users as $index => $user)
+                                <tr>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ $user->teacher->tch_nik ?? '-' }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>
+                                        {{-- Tambahkan aksi jika diperlukan --}}
+                                        <a href="/staff/teacher_account/{{$user->usr_id}}/detail" class="btn btn-primary">Detail</a>
+                                        <a href="/staff/teacher_account/{{$user->usr_id}}/edit" class="btn btn-primary">Edit</a>
+                                        <a href="/staff/teacher_account/{{$user->usr_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
+                                    </td>
+                                </tr>
                             @endforeach
-                            <!-- end row -->
-                            
                         </tbody>
                         <tfoot>
-                            <!-- start row -->
-                            
-
                             <tr>
-                                <th width="10%">No</th>
-                                <th>Kelas</th>
-                                <th>Wali Kelas</th>
+                                <th>No</th>
+                                <th>NIK</th>
+                                <th>Nama</th>
+                                <th>Email</th>
                                 <th>Aksi</th>
                             </tr>
-                            <!-- end row -->
                         </tfoot>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-    
 @endsection
-
-
 
 @push('script')
     <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>

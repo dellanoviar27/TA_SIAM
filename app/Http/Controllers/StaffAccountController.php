@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\staff;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +16,7 @@ class StaffAccountController extends Controller
      */
     public function index()
     {
-        $users = User::where('role', 'staff')->get();
+        $users = User::role('staff')->get();
         $title = 'Hapus Staf!';
         $text = "Staf Tidak Bisa Kembali Jika Dihapus";
         confirmDelete($title, $text);
@@ -52,14 +51,8 @@ class StaffAccountController extends Controller
         // Tambahkan role dengan Spatie
         $user->assignRole('staff'); // <-- WAJIB
 
-        return redirect()->route('staff.staff_account.index')->with('success', 'Akun staff berhasil dibuat.');
-
-        // User::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'role' => 'staff',
-        //     'password' => Hash::make($request->password),
-        // ]);
+        Alert::success('Berhasil Menambahkan', 'Staf Berhasil Ditambahkan');
+        return redirect('/staff/staff_account');
 
         // return redirect()->route('staff.staff_account.index')->with('success', 'Akun staff berhasil dibuat.');
     }
@@ -75,9 +68,11 @@ class StaffAccountController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('staff.staff_account.edit', compact('user'));
     }
 
     /**
@@ -94,15 +89,7 @@ class StaffAccountController extends Controller
     public function destroy(string $id)
     {
         $destroyUser = User::findOrFail($id);
-
-        // Hapus record staff (jika ada)
-        $staff = staff::where('stf_user_id', $destroyUser->usr_id)->first();
-        if ($staff) {
-            $staff->delete(); // soft delete
-        }
-
-        // Hapus user
-        $destroyUser->delete(); // soft delete
+        $destroyUser->delete(); 
 
         Alert::success('Berhasil Menghapus', 'Staf Berhasil Dihapus');
         return redirect('/staff/staff_account');

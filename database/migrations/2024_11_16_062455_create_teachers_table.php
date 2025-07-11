@@ -15,7 +15,7 @@ return new class extends Migration
             $table->bigIncrements('tch_id');
             $table->string('tch_nik');
             $table->unsignedBigInteger('tch_user_id')->nullable();
-            $table->string('tch_name');
+            // $table->string('tch_name');
             $table->string('tch_gender');
             $table->string('tch_birth_place');
             $table->date('tch_birth_date');
@@ -26,8 +26,8 @@ return new class extends Migration
             $table->string('tch_name_institution');
             $table->string('tch_main_task');
             $table->string('tch_additional_task');
-            $table->string('tch_pictures')->nullable();
-
+            // $table->string('tch_pictures')->nullable();
+            
              // Custom timestamps
             $table->timestamp('tch_created_at')->nullable();
             $table->timestamp('tch_updated_at')->nullable();
