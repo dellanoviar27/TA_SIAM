@@ -1,7 +1,7 @@
 @extends('staff.master_student')
 
 @section('title')
-    Detail Guru
+    Detail Guru | SIAM Al-Mu'min
 @endsection
 
 @section('content')

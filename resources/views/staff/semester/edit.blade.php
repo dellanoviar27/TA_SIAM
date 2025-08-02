@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Edit Semester
+    Edit Semester | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -40,26 +40,12 @@
                       <div>error</div>
                     @enderror
                   </div>
-
-                {{-- <div class="mb-4 row align-items-center">
-                  <label for="Select" class="form-label col-sm-3 col-form-label">Wali Kelas</label>
-                  <div class="col-sm-9">
-                  <select id="Select" name="tch_id" class="form-control" required>
-                  <option   value="{{$$Classes->teacher->tch_id}}">{{$Classes->teacher->tch_name}}</option>
-                  @foreach ($teacher as  $teacher)
-                    <option value="{{$teacher->tch_id}}">{{$teacher->tch_name}}</option>
-                  @endforeach
-                  </select>
-                  @error('cls_teacher_id')
-                      <div id="cls_id" class="form-text">{{ $message }}</div>
-                  @enderror
-                  </div>
-              </div> --}}
                 
                 <div class="row">
                   <div class="col-sm-3"></div>
                   <div class="col-sm-9">
-                    <input type="submit" class="btn btn-primary" value="Kirim" id="">
+                    <input type="submit" class="btn btn-primary me-2" value="Kirim">
+                    <input type="button" class="btn btn-danger" value="Batal" onclick="history.back();">
                   </div>
                 </div>
               </div>

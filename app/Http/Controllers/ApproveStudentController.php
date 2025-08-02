@@ -54,7 +54,7 @@ class ApproveStudentController extends Controller
     public function verifikasi($id)
     {
         $student = Student::findOrFail($id);
-        $student->std_status = 'diterima';
+        $student->std_status = 'verified';
         $student->save();
 
         Alert::success('Verifikasi Berhasil', 'Siswa berhasil diverifikasi!');

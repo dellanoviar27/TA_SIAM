@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Daftar Siswa
+    Daftar Siswa | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -29,7 +29,7 @@
                                 <th>NIK</th>
                                 <th>Nama</th>
                                 <th>Jenis Kelamin</th>
-                                <th>Alamat</th>
+                                {{-- <th>Alamat</th> --}}
                                 <th>Aksi</th>
                             </tr>
                             <!-- end row -->
@@ -44,7 +44,7 @@
                                 <td>{{$student->user->name ?? '-' }}</td>
                                 <td>{{$student->std_gender}}</td>
                                 {{-- <td>{{$student->classes->cls_level}} {{$student->classes->cls_number}}</td> --}}
-                                <td>{{$student->std_address}}</td>
+                                {{-- <td>{{$student->std_address}}</td> --}}
                              
                                
                                
@@ -68,7 +68,7 @@
                                 <th>NIK</th>
                                 <th>Nama</th>
                                 <th>Jenis Kelamin</th>
-                                <th>Alamat</th>
+                                {{-- <th>Alamat</th> --}}
                                 <th>Aksi</th>
                             </tr>
                             <!-- end row -->

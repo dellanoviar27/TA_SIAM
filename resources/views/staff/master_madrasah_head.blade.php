@@ -9,7 +9,7 @@
   
   <div id="main-wrapper">
     <!-- Sidebar Start -->
-    @include('staff.sidebar')
+    @include('staff.sidebar_madrasah_head')
     <!--  Sidebar End -->
     <div class="page-wrapper">
       <!--  Header Start -->

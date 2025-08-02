@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Tambah Staf
+    Tambah Staf | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -64,7 +64,8 @@
                 <div class="row">
                   <div class="col-sm-3"></div>
                   <div class="col-sm-9">
-                    <input type="submit" class="btn btn-primary" value="Kirim" id="">
+                    <input type="submit" class="btn btn-primary" value="Tambah" id="">
+                    <input type="button" class="btn btn-danger" value="Batal" onclick="history.back();">
                   </div>
                 </div>
               </div>

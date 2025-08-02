@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Daftar Wali Kelas
+    Daftar Wali Kelas | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -28,6 +28,7 @@
                                 <th width="10%">No</th>
                                 <th>Kelas</th>
                                 <th>Wali Kelas</th>
+                                <th>Semester</th>
                                 <th>Aksi</th>
                             </tr>
                             <!-- end row -->
@@ -39,11 +40,11 @@
                                 
                                 <td>{{$no+1}}</td>
                                 <td>{{$Homeroom_teacher->class->cls_level}} {{$Homeroom_teacher->class->cls_number}}</td>
-                               <td>{{ $Homeroom_teacher->teacher->user->name ?? '-' }}</td>
+                                <td>{{$Homeroom_teacher->teacher->user->name ?? '-' }}</td>
+                                <td>{{$Homeroom_teacher->semester->smt_school_year}} | {{$Homeroom_teacher->semester->smt_semester}}</td>
                                 <td>
                                      <a href="/staff/homeroom_teacher/{{$Homeroom_teacher->hrt_id}}/edit" class="btn btn-primary">Edit</a>
                                      <a href="/staff/homeroom_teacher/{{$Homeroom_teacher->hrt_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
-
                                 </td>
 
 
@@ -61,6 +62,7 @@
                                 <th width="10%">No</th>
                                 <th>Kelas</th>
                                 <th>Wali Kelas</th>
+                                <th>Semester</th>
                                 <th>Aksi</th>
                             </tr>
                             <!-- end row -->

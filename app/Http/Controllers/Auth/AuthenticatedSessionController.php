@@ -41,7 +41,15 @@ class AuthenticatedSessionController extends Controller
         }
 
         if ($user->hasRole('teacher')) {
-            return redirect('teacher/dashboard');
+            return redirect('/teacher/dashboard');
+        }
+
+        if ($user->hasRole('curriculum')) {
+            return redirect('/curriculum/dashboard');
+        }
+
+        if ($user->hasRole('madrasah_head')) {
+            return redirect('/madrasah_head/dashboard');
         }
 
         if ($user->hasRole('student')) {

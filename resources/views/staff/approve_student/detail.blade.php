@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Detail Calon Siswa
+    Detail Calon Siswa | SIAM Al-Mu'min
 @endsection
 
 @section('content')

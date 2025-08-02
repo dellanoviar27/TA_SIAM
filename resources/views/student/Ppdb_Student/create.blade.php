@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Daftar PPDB
+    Data Calon Siswa | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -13,14 +13,14 @@
     <div class="col-lg-12">
         <div class="card">
           <div class="px-4 py-3 border-bottom">
-            <h4 class="card-title mb-0">Data Diri</h4>
+            <h4 class="card-title mb-0">Data Calon Siswa</h4>
           </div>
           {{-- <form action="" method="post"> --}}
           <form action="{{ route('student.Ppdb_Student.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
               <div class="mb-4 row align-items-center">
-                <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">NIK</label>
+                <label for="exampleInputText2" value="{{ $student->std_nik ?? '' }}" class="form-label col-sm-3 col-form-label">NIK</label>
                 <div class="col-sm-9">
                   <input type="number" name="std_nik" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('NIK Wajib Diisi')" 
                   onchange="this.setCustomValidity('')">
@@ -37,6 +37,17 @@
                   onchange="this.setCustomValidity('')">
                 </div>
                 @error('name')
+                  <div>error</div>
+                @enderror
+              </div>
+
+               <div class="mb-4 row align-items-center">
+                <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                  <input type="email" name="email" class="form-control" value="{{ old('email', $user->email ?? '') }}" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Email Wajib Diisi')" 
+                  onchange="this.setCustomValidity('')">
+                </div>
+                @error('email')
                   <div>error</div>
                 @enderror
               </div>
@@ -112,7 +123,7 @@
                 </div>
 
                   <div class="mb-4 row align-items-center">
-                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Nama Sekolah</label>
+                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Asal Sekolah</label>
                     <div class="col-sm-9">
                       <input type="text" name="std_school" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Nama Sekolah Umum Wajib Diisi')" 
                       onchange="this.setCustomValidity('')">
@@ -201,7 +212,7 @@
                 <div class="row">
                   <div class="col-sm-3"></div>
                   <div class="col-sm-9">
-                    <input type="submit" class="btn btn-primary" value="Submit" id="">
+                    <input type="submit" class="btn btn-primary" value="Kirim" id="">
                   </div>
                 </div>
               </div>

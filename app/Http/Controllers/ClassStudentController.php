@@ -23,12 +23,14 @@ class ClassStudentController extends Controller
         $students = collect();
         $studentsInClass = collect();
 
-        if ($selectedSemester && $selectedClass) {
-            // Ambil siswa yang belum masuk kelas di semester ini
+         if ($selectedSemester && $selectedClass) {
+        // Ambil siswa yang sudah diverifikasi (status = verified) dan belum masuk kelas di semester ini
             $students = Student::withoutTrashed()
+                ->where('std_status', 'verified') // hanya siswa yang sudah diverifikasi
                 ->whereDoesntHave('classStudents', function ($query) use ($selectedSemester) {
                     $query->where('cst_semester_id', $selectedSemester);
-                })->get();
+                })
+                ->get();
 
             // Ambil siswa yang sudah masuk kelas ini
             $studentsInClass = ClassStudent::with('student.user')
@@ -113,7 +115,7 @@ class ClassStudentController extends Controller
                         'cst_class_id' => $request->new_class_id,
                         'cst_semester_id' => $request->new_semester_id,
                         'cst_student_id' => $data->cst_student_id,
-                        'cst_teacher_id' => null, // isi jika wali kelas langsung diketahui
+                        // 'cst_teacher_id' => null, // isi jika wali kelas langsung diketahui
                     ]);
                 }
             }

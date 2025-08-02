@@ -6,93 +6,105 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Dashboard
+    Dashboard Staf | SIAM Al-Mu'min
 @endsection
 
 @section('content')
-    <div class="owl-carousel counter-carousel owl-theme">
-            <div class="item">
-              <div class="card border-0 zoom-in bg-primary-subtle shadow-none">
+    <div class="row">
+        <!-- Card untuk jumlah Siswa -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-0 zoom-in bg-primary-subtle shadow-none">
                 <div class="card-body">
-                  <div class="text-center">
-                    <img src="../assets/images/svgs/icon-user-male.svg" width="50" height="50" class="mb-3" alt="modernize-img" />
-                    <p class="fw-semibold fs-3 text-primary mb-1">
-                      Employees
-                    </p>
-                    <h5 class="fw-semibold text-primary mb-0">96</h5>
-                  </div>
+                    <div class="text-center">
+                        <img src="../assets/images/svgs/icon-user-male.svg" width="50" height="50" class="mb-3" alt="modernize-img" />
+                        <p class="fw-semibold fs-3 text-primary mb-1">Siswa</p>
+                        <h5 class="fw-semibold text-primary mb-0">{{ $totalStudents }}</h5>
+                    </div>
+                     <div class="text-center mt-3">
+                        <a href="/staff/student" class="btn btn-primary btn-sm">Lihat Data</a>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="item">
-              <div class="card border-0 zoom-in bg-warning-subtle shadow-none">
+        </div>
+
+        <!-- Card untuk jumlah Guru -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-0 zoom-in bg-warning-subtle shadow-none">
                 <div class="card-body">
-                  <div class="text-center">
-                    <img src="../assets/images/svgs/icon-briefcase.svg" width="50" height="50" class="mb-3" alt="modernize-img" />
-                    <p class="fw-semibold fs-3 text-warning mb-1">Clients</p>
-                    <h5 class="fw-semibold text-warning mb-0">3,650</h5>
-                  </div>
+                    <div class="text-center">
+                        <img src="../assets/images/svgs/icon-briefcase.svg" width="50" height="50" class="mb-3" alt="modernize-img" />
+                        <p class="fw-semibold fs-3 text-warning mb-1">Guru</p>
+                        <h5 class="fw-semibold text-warning mb-0">{{ $totalTeachers }}</h5>
+                    </div>
+                    <div class="text-center mt-3">
+                        <a href="/staff/teacher" class="btn btn-primary btn-sm">Lihat Data</a>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="item">
-              <div class="card border-0 zoom-in bg-info-subtle shadow-none">
+        </div>
+
+        <!-- Card untuk jumlah Staf -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-0 zoom-in bg-info-subtle shadow-none">
                 <div class="card-body">
-                  <div class="text-center">
-                    <img src="../assets/images/svgs/icon-mailbox.svg" width="50" height="50" class="mb-3" alt="modernize-img" />
-                    <p class="fw-semibold fs-3 text-info mb-1">Projects</p>
-                    <h5 class="fw-semibold text-info mb-0">356</h5>
-                  </div>
+                    <div class="text-center">
+                        <img src="../assets/images/svgs/icon-mailbox.svg" width="50" height="50" class="mb-3" alt="modernize-img" />
+                        <p class="fw-semibold fs-3 text-info mb-1">Wali Kelas</p>
+                        <h5 class="fw-semibold text-info mb-0">{{  $totalHomeroomTeachers }}</h5>
+                    </div>
+                     <div class="text-center mt-3">
+                        <a href="/staff/homeroom_teacher" class="btn btn-primary btn-sm">Lihat Data</a>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="item">
-              <div class="card border-0 zoom-in bg-danger-subtle shadow-none">
+        </div>
+
+        <!-- Card untuk jumlah Kelas -->
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-0 zoom-in bg-success-subtle shadow-none">
                 <div class="card-body">
-                  <div class="text-center">
-                    <img src="../assets/images/svgs/icon-favorites.svg" width="50" height="50" class="mb-3" alt="modernize-img" />
-                    <p class="fw-semibold fs-3 text-danger mb-1">Events</p>
-                    <h5 class="fw-semibold text-danger mb-0">696</h5>
-                  </div>
+                    <div class="text-center">
+                        <img src="../assets/images/svgs/icon-speech-bubble.svg" width="50" height="50" class="mb-3" alt="modernize-img" />
+                        <p class="fw-semibold fs-3 text-success mb-1">Kelas</p>
+                        <h5 class="fw-semibold text-success mb-0">{{ $totalClasses }}</h5>
+                    </div>
+                     <div class="text-center mt-3">
+                        <a href="/staff/classes" class="btn btn-primary btn-sm">Lihat Data</a>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="item">
-              <div class="card border-0 zoom-in bg-success-subtle shadow-none">
-                <div class="card-body">
-                  <div class="text-center">
-                    <img src="../assets/images/svgs/icon-speech-bubble.svg" width="50" height="50" class="mb-3" alt="modernize-img" />
-                    <p class="fw-semibold fs-3 text-success mb-1">Payroll</p>
-                    <h5 class="fw-semibold text-success mb-0">$96k</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="card border-0 zoom-in bg-info-subtle shadow-none">
-                <div class="card-body">
-                  <div class="text-center">
-                    <img src="../assets/images/svgs/icon-connect.svg" width="50" height="50" class="mb-3" alt="modernize-img" />
-                    <p class="fw-semibold fs-3 text-info mb-1">Reports</p>
-                    <h5 class="fw-semibold text-info mb-0">59</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-    
+        </div>
+    </div>
+
+    <!-- Diagram Jenis Kelamin Siswa -->
+    <div class="row">
+        <div class="col-lg-6">
+            <canvas id="genderChart"></canvas>
+        </div>
+    </div>
 @endsection
 
-
-
 @push('script')
-    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
-
-    <script src="{{ asset('assets/js/datatable/datatable-advanced.init.js') }}"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Data untuk Chart
+        var ctx = document.getElementById('genderChart').getContext('2d');
+        var genderChart = new Chart(ctx, {
+            type: 'pie',  // Jenis diagram
+            data: {
+                labels: ['Laki-laki', 'Perempuan'],
+                datasets: [{
+                    label: 'Jenis Kelamin Siswa',
+                    data: [{{ $maleStudents }}, {{ $femaleStudents }}],
+                    backgroundColor: ['#36a2eb', '#ff6384'],
+                    borderColor: ['#ffffff', '#ffffff'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
 @endpush

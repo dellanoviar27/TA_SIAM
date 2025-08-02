@@ -20,19 +20,19 @@ return new class extends Migration
             $table->unsignedBiginteger('sch_semester_id');
             $table->time('sch_start_time');
             $table->time('sch_end_time');
-          
+            $table->boolean('sch_is_visible')->default(false); // <<--- Tambahkan di sini
             $table->timestamps();
 
-            $table->renameColumn('updated_at', 'sch_updated_at');
-            $table->renameColumn('created_at', 'sch_created_at');
+            $table->timestamp('sch_created_at')->nullable();
+            $table->timestamp('sch_updated_at')->nullable();
+            $table->timestamp('sch_deleted_at')->nullable();
 
             $table->unsignedBigInteger('sch_created_by')->unsigned()->nullable();
             $table->unsignedBigInteger('sch_deleted_by')->unsigned()->nullable();
             $table->unsignedBigInteger('sch_updated_by')->unsigned()->nullable();
-      
-            $table->softDeletes();
-            $table->renameColumn('deleted_at', 'sch_deleted_at');
+    
             $table->string('sch_sys_note')->nullable();
+            $table->softDeletes();
 
             $table->foreign('sch_created_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('sch_updated_by')->references('usr_id')->on('users')->onDelete('cascade');

@@ -33,5 +33,19 @@ class UserSeeder extends Seeder
             'password'=>bcrypt('12345678')
         ]);
         $student->assignRole('student');
+
+        $curriculum = User::firstOrCreate([
+            'name'=>'curriculum',
+            'email'=>'curriculum@gmail.com',
+            'password'=>bcrypt('12345678')
+        ]);
+        $curriculum->assignRole('curriculum');
+
+        $madrasah_head = User::firstOrCreate([
+            'name'=>'madrasah_head',
+            'email'=>'madrasahhead@gmail.com',
+            'password'=>bcrypt('12345678')
+        ]);
+        $madrasah_head->assignRole('madrasah_head');
     }
 }

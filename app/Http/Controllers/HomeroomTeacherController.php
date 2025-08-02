@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\homeroom_teacher;
 use App\Models\Classes;
 use App\Models\Teacher;
+use App\Models\semester;
 use Illuminate\Http\Request;
 Use Alert;
 
@@ -29,7 +30,8 @@ class HomeroomTeacherController extends Controller
     {
         $classes = Classes::all();
         $teacher = Teacher::all();
-        return view ('staff.homeroom_teacher.create', compact('classes', 'teacher'));
+        $semester = Semester::all();
+        return view ('staff.homeroom_teacher.create', compact('classes', 'teacher', 'semester'));
     }
 
     /**
@@ -40,6 +42,7 @@ class HomeroomTeacherController extends Controller
         $homeroom_teacher = homeroom_teacher::create([
             'hrt_class_id'         =>  $request->cls_id,
             'hrt_teacher_id'       =>  $request->tch_id,
+            'hrt_semester_id'      =>  $request->smt_id,
         ]);
 
         Alert::success('Berhasil Menambahkan', 'Wali Kelas Berhasil Ditambahkan');
@@ -62,7 +65,8 @@ class HomeroomTeacherController extends Controller
         $homeroom_teacher = homeroom_teacher::findOrFail($id);
         $classes          = Classes::all();
         $teacher          = Teacher::all();
-        return view ('staff.homeroom_teacher.edit', compact(['homeroom_teacher', 'classes', 'teacher']));
+        $semester         = Semester::all();
+        return view ('staff.homeroom_teacher.edit', compact(['homeroom_teacher', 'classes', 'teacher', 'semester']));
     }
 
     /**
@@ -73,6 +77,7 @@ class HomeroomTeacherController extends Controller
         $updateHomeroom_Teacher = homeroom_teacher::findOrFail($id);
         $updateHomeroom_Teacher-> hrt_class_id   = $request -> cls_id;
         $updateHomeroom_Teacher-> hrt_teacher_id = $request -> tch_id;
+        $updateHomeroom_Teacher-> hrt_semester_id = $request -> smt_id;
         $updateHomeroom_Teacher->save();
 
         Alert::success('Berhasil Mengedit', 'Wali Kelas Berhasil Diedit');

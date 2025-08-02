@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Edit Mata Pelajaran
+    Edit Mata Pelajaran | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -65,52 +65,12 @@
                     @enderror
                     </div>
                 </div>
-
-                  {{-- <div class="mb-4 row align-items-center">
-                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Semester</label>
-                    <div class="col-sm-9">
-                      <input type="text" name="sbj_semester" value="{{$Subject->sbj_semester}}" class="form-control" id="exampleInputText1" placeholder="" required oninvalid="this.setCustomValidity('Semester Wajib Diisi')" 
-                      onchange="this.setCustomValidity('')">
-                    </div>
-                    @error('sbj_semester')
-                      <div>error</div>
-                    @enderror
-                  </div> --}}
-
-                  {{-- <div class="mb-4 row align-items-center">
-                    <label for="exampleInputText1" class="form-label col-sm-3 col-form-label">Semester</label>
-                    <div class="col-sm-9">
-                      <select class ="form-select mr-sm-2" id="inLineFormCustomSelect" name="sbj_semester"  oninvalid="this.setCustomValidity ('Semester Wajib Diisi')"
-                      onchange="this.setCustomValidity('')" required>
-                      @if ($Subject->sbj_semester == "Ganjil")
-                      <option value="Ganjil">Ganjil</option>
-                      <option value="Genap">Genap</option>
-                      @else
-                      <option value="Ganjil">Ganjil</option>
-                      <option value="Genap">Genap</option>
-                      @endif
-                      </select>
-                    </div>
-                    @error('sbj_semester')
-                      <div>error</div>
-                    @enderror
-                  </div> --}}
-
-                {{-- <div class="mb-4 row align-items-center">
-                  <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Wali Kelas</label>
-                  <div class="col-sm-9">
-                    <input type="text" name="cls_homeroom" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Singkatan Wajib Diisi')" 
-                    onchange="this.setCustomValidity('')">
-                  </div>
-                  @error('cls_homeroom')
-                    <div>error</div>
-                  @enderror
-                </div> --}}
                 
                 <div class="row">
                   <div class="col-sm-3"></div>
                   <div class="col-sm-9">
-                    <input type="submit" class="btn btn-primary" value="Kirim" id="">
+                    <input type="submit" class="btn btn-primary me-2" value="Kirim">
+                    <input type="button" class="btn btn-danger" value="Batal" onclick="history.back();">
                   </div>
                 </div>
               </div>

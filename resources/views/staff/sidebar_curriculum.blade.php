@@ -33,54 +33,22 @@
               </a>
             </li>
 
-            <!-- ---------------------------------- -->
+             <!-- ---------------------------------- -->
             <!-- AKADEMIK -->
             <!-- ---------------------------------- -->
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">AKADEMIK</span>
             </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="" aria-expanded="false">
-                <span>
-                  <i class="ti ti-check"></i>
-                </span>
-                <span class="hide-menu">Pembagian Kelas</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="/staff/schedule" aria-expanded="false">
-                <span>
-                  <i class="ti ti-reload"></i>
-                </span>
-                <span class="hide-menu">Jadwal Pelajaran</span>
-              </a>
-            </li>
 
-            <!-- ---------------------------------- -->
-            <!-- LAPORAN-->
-            <!-- ---------------------------------- -->
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">LAPORAN</span>
-            </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./main/app-calendar.html" aria-expanded="false">
+              <a class="sidebar-link" href="/curriculum/schedule" aria-expanded="false">
                 <span>
-                  <i class="ti ti-file"></i>
+                  <i class="ti ti-calendar"></i>
                 </span>
-                <span class="hide-menu">Laporan Nilai</span>
+                <spasn class="hide-menu">Jadwal Pelajaran</spasn>
               </a>
             </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./main/app-calendar.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-receipt"></i>
-                </span>
-                <span class="hide-menu">Rekap Absensi</span>
-              </a>
-            </li>
-            
         <!-- ---------------------------------- -->
         <!-- Start Vertical Layout Sidebar -->
         <!-- ---------------------------------- -->

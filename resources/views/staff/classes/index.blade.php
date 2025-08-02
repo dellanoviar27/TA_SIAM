@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Daftar Kelas
+    Daftar Kelas | SIAM Al-Mu'min
 @endsection
 
 @section('content')

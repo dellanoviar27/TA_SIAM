@@ -13,7 +13,7 @@
   <!-- Core Css -->
   <link rel="stylesheet" href="../assets/css/styles.css" />
 
-  <title>SIAM Al-Mu'min | Register</title>
+  <title>Register | SIAM Al-Mu'min</title>
 </head>
 
 <body>
@@ -50,7 +50,7 @@
                     <input type="password" class="form-control" id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password">
                   </div>
                   <div class="mb-4">
-                    <label for="exampleInputPassword1" class="form-label">Ulangi Password</label>
+                    <label for="exampleInputPassword1" class="form-label">Konfirmasi Password</label>
                     <input  class="form-control" id="password_confirmation"  type="password" name="password_confirmation" required autocomplete="new-password" >
                   </div>
                   <input type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2" value="{{ __('Register') }}">

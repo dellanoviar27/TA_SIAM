@@ -16,7 +16,6 @@ return new class extends Migration
 
             $table->unsignedBigInteger('cst_class_id');
             $table->unsignedBigInteger('cst_semester_id');
-            $table->unsignedBigInteger('cst_teacher_id')->nullable();
             $table->unsignedBigInteger('cst_student_id');
 
             // Custom timestamp fields
@@ -34,7 +33,6 @@ return new class extends Migration
             // Foreign keys
             $table->foreign('cst_class_id')->references('cls_id')->on('classes')->onDelete('cascade');
             $table->foreign('cst_semester_id')->references('smt_id')->on('semesters')->onDelete('cascade');
-            $table->foreign('cst_teacher_id')->references('tch_id')->on('teachers')->onDelete('cascade');
             $table->foreign('cst_student_id')->references('std_id')->on('students')->onDelete('cascade');
             $table->foreign('cst_created_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('cst_updated_by')->references('usr_id')->on('users')->onDelete('cascade');

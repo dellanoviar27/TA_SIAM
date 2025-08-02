@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Purple_Theme" data-layout="vertical">
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 
 <!-- head -->
 @include('staff.head')
@@ -22,7 +22,7 @@
   </div> --}}
   <div id="main-wrapper">
     <!-- Sidebar Start -->
-    @include('staff.sidebar.teacher')
+    @include('staff.sidebar_teacher')
     <!--  Sidebar End -->
     <div class="page-wrapper">
       <!--  Header Start -->

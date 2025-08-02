@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('hrt_id');
             $table->unsignedBiginteger('hrt_class_id');
             $table->unsignedBiginteger('hrt_teacher_id');
+            $table->unsignedBigInteger('hrt_semester_id');
             $table->timestamps();
 
             $table->renameColumn('updated_at', 'hrt_updated_at');
@@ -33,6 +34,7 @@ return new class extends Migration
             $table->foreign('hrt_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
             $table->foreign('hrt_class_id')->references('cls_id')->on('classes')->onDelete('cascade');
             $table->foreign('hrt_teacher_id')->references('tch_id')->on('teachers')->onDelete('cascade');
+            $table->foreign('hrt_semester_id')->references('smt_id')->on('semesters')->onDelete('cascade');
         });
     }
 

@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Tambah Siswa
+    Tambah Siswa | SIAM Al-Mu'min
 @endsection
 
 @section('content')

@@ -22,4 +22,8 @@ class classes extends Model
         return $this->hasMany(Ppdb_Student::class, 'std_class_id', 'cls_id');
     }
 
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class, 'cls_subject_id', 'sbj_id');
+    }
 }

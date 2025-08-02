@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Daftar Semester
+    Daftar Semester | SIAM Al-Mu'min
 @endsection
 
 @section('content')

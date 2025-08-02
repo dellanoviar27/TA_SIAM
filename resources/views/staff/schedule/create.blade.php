@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Tambah Jadwal Pelajaran
+    Tambah Jadwal Pelajaran | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -72,7 +72,7 @@
                   <select id="Select" name="tch_id" class="form-control" required>
                   <option hidden  value="">Pilih Guru</option>
                   @foreach ($teacher as  $teacher)
-                    <option value="{{ $teacher->tch_id }}">{{ $teacher->tch_name}}</option>
+                    <option value="{{ $teacher->tch_id }}">{{ $teacher->user->name ?? '-' }}</option>
                   @endforeach
                   </select>
                   @error('sch_teacher_id')
@@ -109,7 +109,7 @@
                 <select id="Select" name="smt_id" class="form-control" required>
                 <option hidden  value="">Pilih Semester</option>
                 @foreach ($semester as $semester)
-                  <option value="{{ $semester->smt_id }}">{{ $semester->smt_semester}}|{{ $semester->smt_school_year}}</option>
+                  <option value="{{ $semester->smt_id }}">{{ $semester->smt_school_year}} | {{ $semester->smt_semester}}</option>
                 @endforeach
                 </select>
                 @error('sch_semester_id')
@@ -117,11 +117,23 @@
                 @enderror
                 </div>
             </div>
+
+            {{-- Tambahkan di sini: Checkbox Tampilkan ke Guru dan Siswa --}}
+              <div class="mb-4 row align-items-center">
+                <label for="sch_is_visible" class="form-label col-sm-3 col-form-label">Tampilkan?</label>
+                <div class="col-sm-9">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="sch_is_visible" name="sch_is_visible" value="1">
+                    <label class="form-check-label" for="sch_is_visible">Tampilkan ke Guru dan Siswa</label>
+                  </div>
+                </div>
+              </div>
                 
                 <div class="row">
                   <div class="col-sm-3"></div>
                   <div class="col-sm-9">
-                    <input type="submit" class="btn btn-primary" value="Kirim" id="">
+                    <input type="submit" class="btn btn-primary me-2" value="Kirim">
+                    <input type="button" class="btn btn-danger" value="Batal" onclick="history.back();">
                   </div>
                 </div>
               </div>

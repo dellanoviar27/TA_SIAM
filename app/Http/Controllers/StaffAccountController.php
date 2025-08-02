@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
-Use Alert;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class StaffAccountController extends Controller
 {

@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Daftar Akun Staff
+    Daftar Akun Staff | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="mb-5 position-relative">
-                    <h4 class="card-title mb-0">Daftar Akun Staff</h4>
+                    <h4 class="card-title mb-0">Daftar Staff</h4>
                     <a href="/staff/staff_account/create" class="btn btn-primary position-absolute top-0 end-0">Tambah Staff</a>
                 </div>
 

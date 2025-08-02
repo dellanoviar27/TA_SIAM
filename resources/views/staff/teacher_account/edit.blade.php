@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Edit Guru
+    Edit Guru | SIAM Al-Mu'min
 @endsection
 
 @section('content')

@@ -1,7 +1,7 @@
-@extends('staff.master_student')
+@extends('staff.master')
 
 @section('title')
-    Detail Pendaftaran Siswa
+    Detail Pendaftaran Siswa | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="px-4 py-3 border-bottom">
-                <h4 class="card-title mb-0">Detail Data Calon Siswa</h4>
+                <h4 class="card-title mb-0">Detail Data Siswa</h4>
             </div>
             <div class="card-body">
                 
@@ -37,7 +37,7 @@
                     <dt class="col-sm-3">Alamat</dt>
                     <dd class="col-sm-9">: {{ $student->std_address }}</dd>
 
-                    <dt class="col-sm-3">Nama Sekolah</dt>
+                    <dt class="col-sm-3">Asal Sekolah</dt>
                     <dd class="col-sm-9">: {{ $student->std_school }}</dd>
 
                     <dt class="col-sm-3">Tingkatan Sekolah</dt>
@@ -111,6 +111,19 @@
                 <dl class="row mb-4">
                     <dt class="col-sm-3">No. HP Orangtua / Wali</dt>
                     <dd class="col-sm-9">: {{ $student->parent->prt_parent_phone ?? '-' }}</dd>
+                </dl>
+
+                {{-- BERKAS KK --}}
+                <h5 class="mb-3">Berkas Kartu Keluarga (KK)</h5>
+                <dl class="row mb-4">
+                    <dt class="col-sm-3">Kartu Keluarga</dt>
+                    <dd class="col-sm-9">
+                        @if ($student->std_kk_photo)
+                           <a href="{{ Storage::url($student->std_kk_photo) }}" target="_blank">Lihat KK</a>
+                        @else
+                            <span class="text-danger">Belum diupload</span>
+                        @endif
+                    </dd>
                 </dl>
 
                 {{-- TOMBOL KEMBALI --}}

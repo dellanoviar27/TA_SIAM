@@ -22,7 +22,7 @@ class Student extends Model
         'std_nik', 'std_user_id', 'std_gender',
         'std_birth_place', 'std_birth_date', 'std_child_to',
         'std_number_of_siblings', 'std_address', 'std_date_registration',
-        'std_school','std_formal_level', 'std_formal_grade','std_class_id', 'std_parent_id', 'std_nisn', 'std_status'
+        'std_school','std_formal_level', 'std_formal_grade','std_class_id', 'std_parent_id', 'std_nisn', 'std_status',  'std_kk_photo'
     ];
 
     public function classes()
@@ -58,5 +58,26 @@ class Student extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'std_user_id', 'usr_id');
+    }
+
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class, 'att_student_id', 'std_id');
+    }
+
+    public function class()
+    {
+        return $this->classes();
+    }
+
+   public function has_completed_all_data()
+    {
+        return $this->parent && $this->upload_file; // sesuaikan dengan relasi dan data kamu
+    }
+
+     // Helper untuk mengambil URL file KK
+    public function getKkUrlAttribute()
+    {
+        return $this->std_kk_photo ? asset('storage/' . $this->std_kk_photo) : null;
     }
 }

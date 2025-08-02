@@ -25,21 +25,22 @@
             <!-- Dashboard -->
             <!-- ---------------------------------- -->
             <li class="sidebar-item">
-              <a class="sidebar-link" href="/staff/dashboard" id="get-url" aria-expanded="false">
+              <a class="sidebar-link" href="/staff/dashboard" aria-expanded="false">
                 <span>
                   <i class="ti ti-aperture"></i>
                 </span>
                 <span class="hide-menu">Dasboard</span>
               </a>
             </li>
-            <li class="sidebar-item">
+
+            {{-- <li class="sidebar-item">
               <a class="sidebar-link" href="/staff/information" aria-expanded="false">
                 <span>
                   <i class="ti ti-bell"></i>
                 </span>
                 <span class="hide-menu">Pengumuman</span>
               </a>
-            </li>
+            </li> --}}
 
             <!-- ---------------------------------- -->
             <!-- PPDB -->
@@ -89,31 +90,6 @@
                 <span class="hide-menu">Kelas Siswa</span>
               </a>
             </li>
-            {{-- <li class="sidebar-item">
-              <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
-                <span class="d-flex">
-                  <i class="ti ti-layout"></i>
-                </span>
-                <span class="hide-menu">Kelas</span>
-              </a>
-              <ul aria-expanded="false" class="collapse first-level">
-                <li class="sidebar-item">
-                  <a href="./main/widgets-cards.html" class="sidebar-link">
-                    <div class="round-16 d-flex align-items-center justify-content-center">
-                      <i class="ti ti-circle"></i>
-                    </div>
-                    <span class="hide-menu">Input Kelas</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a href="./main/widgets-banners.html" class="sidebar-link">
-                    <div class="round-16 d-flex align-items-center justify-content-center">
-                      <i class="ti ti-circle"></i>
-                    </div>
-                    <span class="hide-menu">Kelas Ajar</span>
-                  </a>
-                </li> --}}
-
             <li class="sidebar-item">
               <a class="sidebar-link" href="/staff/subject" aria-expanded="false">
                 <span>
@@ -132,14 +108,14 @@
               </a>
             </li>
 
-            <li class="sidebar-item">
+            {{-- <li class="sidebar-item">
               <a class="sidebar-link" href="/staff/schedule" aria-expanded="false">
                 <span>
                   <i class="ti ti-calendar"></i>
                 </span>
                 <spasn class="hide-menu">Jadwal Pelajaran</spasn>
               </a>
-            </li>
+            </li> --}}
 
             <!-- ---------------------------------- -->
             <!-- DATA MASTER-->
@@ -172,6 +148,22 @@
                 <span class="hide-menu">Data Staf</span>
               </a>
             </li>
+             <li class="sidebar-item">
+              <a class="sidebar-link" href="/staff/curriculum_account" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Data Kurikulum</span>
+              </a>
+            </li>
+             <li class="sidebar-item">
+              <a class="sidebar-link" href="/staff/madrasah_head_account" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Data Kepala Madrasah</span>
+              </a>
+            </li>
 
             <!-- ---------------------------------- -->
             <!-- LAPORAN-->
@@ -181,21 +173,13 @@
               <span class="hide-menu">LAPORAN</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./main/app-calendar.html" aria-expanded="false">
+              <a class="sidebar-link" href="/staff/reports" aria-expanded="false">
                 <span>
                   <i class="ti ti-file"></i>
                 </span>
                 <span class="hide-menu">Laporan Nilai</span>
               </a>
             </li>
-            {{-- <li class="sidebar-item">
-              <a class="sidebar-link" href="./main/app-calendar.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-receipt"></i>
-                </span>
-                <span class="hide-menu">Rekap Absensi</span>
-              </a>
-            </li> --}}
         <!-- ---------------------------------- -->
         <!-- Start Vertical Layout Sidebar -->
         <!-- ---------------------------------- -->

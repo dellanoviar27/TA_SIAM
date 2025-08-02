@@ -42,6 +42,8 @@ class RoleSeeder extends Seeder
         $role = Role::create(['name' => 'staff']);
         $role = Role::create(['name' => 'teacher']);
         $role = Role::create(['name' => 'student']);
+        $role = Role::create(['name' => 'curriculum']);
+        $role = Role::create(['name' => 'madrasah_head']);
 
         // $roleStaff = Role::findByName('staff');
         // $roleStaff->givePermissionTo('tambah-user');

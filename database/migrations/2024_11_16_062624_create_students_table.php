@@ -27,7 +27,10 @@ return new class extends Migration
             $table->string('std_formal_grade')->nullable(); // 1, 2, 3
             $table->unsignedBigInteger('std_class_id')->nullable();
             $table->string('std_nisn');
-            $table->enum('std_status', ['pending', 'diterima', 'ditolak'])->default('pending');
+            $table->enum('std_status', ['pending', 'verified'])->default('pending');
+
+            // Kolom tambahan untuk upload KK
+            $table->string('std_kk_photo')->nullable(); // ← Tambahan kolom file KK
 
              // Manual timestamps
              $table->timestamp('std_created_at')->nullable();

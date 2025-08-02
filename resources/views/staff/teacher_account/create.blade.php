@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Tambah Guru
+    Tambah Guru | SIAM Al-Mu'min
 @endsection
 
 @section('content')

@@ -48,36 +48,51 @@
                   <li class="nav-item dropdown">
                     <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" aria-expanded="false">
                       <div class="d-flex align-items-center">
-                        <div class="user-profile-img">
+                        {{-- <div class="user-profile-img">
                           <img src="{{asset('assets/images/profile/user-1.jpg')}}" class="rounded-circle" width="35" height="35" alt="modernize-img" />
-                        </div>
+                        </div> --}}
+                        <span class="fw-semibold d-block">{{ auth()->user()->name ?? 'User' }}</span>
                       </div>
                     </a>
                     <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop1">
                       <div class="profile-dropdown position-relative" data-simplebar>
-                        <div class="py-3 px-7 pb-0">
+                        {{-- <div class="py-3 px-7 pb-0">
                           <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
-                        </div>
+                        </div> --}}
                         <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                          <img src="  {{asset('assets/images/profile/user-1.jpg')}}" class="rounded-circle" width="80" height="80" alt="modernize-img" />
-                          <div class="ms-3">
+                          {{-- <img src="  {{asset('assets/images/profile/user-1.jpg')}}" class="rounded-circle" width="80" height="80" alt="modernize-img" /> --}}
+                          <div class="ms-1">
                             
                             {{-- {{asset('')}} --}}
                             <h5 class="mb-1 fs-3">{{ auth()->user()->name }}</h5>
-                            {{-- <span class="mb-1 d-block">Designer</span> --}}
                             <p class="mb-0 d-flex align-items-center gap-2">
-                              <i class="ti ti-mail fs-4"></i> info@modernize.com
+                            <i class="ti ti-mail fs-4">{{ auth()->user()->email }}</i>
                             </p>
                           </div>
                         </div>
                         <div class="message-body">
-                          <a href="./main/page-user-profile.html" class="py-8 px-7 mt-8 d-flex align-items-center">
+
+                         @php
+                              $role = auth()->user()->role;
+
+                              switch ($role) {
+                                  case 'teacher':
+                                      $profileRoute = route('teacher.profile');
+                                      break;
+                                  case 'student':
+                                      $profileRoute = route('student.profile');
+                                      break;
+                                  default:
+                                      $profileRoute = '#'; // atau route ke halaman umum
+                              }
+                          @endphp
+
+                          <a href="{{ $profileRoute }}" class="py-8 px-7 mt-8 d-flex align-items-center">
                             <span class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6">
-                              <img src="{{asset('assets/images/svgs/icon-account.svg')}}" alt="modernize-img" width="24" height="24" />
+                              <img src="{{ asset('assets/images/svgs/icon-account.svg') }}" width="24" height="24" />
                             </span>
                             <div class="w-100 ps-3">
                               <h6 class="mb-1 fs-3 fw-semibold lh-base">My Profile</h6>
-                              <span class="fs-2 d-block text-body-secondary">Account Settings</span>
                             </div>
                           </a>
 

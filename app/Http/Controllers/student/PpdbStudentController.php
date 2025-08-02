@@ -7,6 +7,7 @@ use App\Models\student\Ppdb_Parent;
 use App\Models\Classes;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PpdbStudentController extends Controller
@@ -31,38 +32,35 @@ class PpdbStudentController extends Controller
 
     public function store(Request $request)
     {
-
         $request->validate([
-        'std_nik'                => 'required|numeric|unique:students,std_nik',
-        'std_gender'             => 'required',
-        'std_birth_place'        => 'required',
-        'std_birth_date'         => 'required|date',
-        'std_child_to'           => 'required|numeric',
-        'std_number_of_siblings' => 'required|numeric',
-        'std_address'            => 'required|string',
-        'std_school'             => 'required|string',
-        'std_formal_level'       => 'required|string',
-        'std_formal_grade'       => 'nullable|numeric',
-        'std_nisn'               => 'required|numeric',
-        // 'prt_id'                 => 'nullable|exists:ppdb_parents,id',
-    ]);
+            'std_nik'                => 'required|numeric|unique:students,std_nik',
+            'std_gender'             => 'required',
+            'std_birth_place'        => 'required',
+            'std_birth_date'         => 'required|date',
+            'std_child_to'           => 'required|numeric',
+            'std_number_of_siblings' => 'required|numeric',
+            'std_address'            => 'required|string',
+            'std_school'             => 'required|string',
+            'std_formal_level'       => 'required|string',
+            'std_formal_grade'       => 'nullable|numeric',
+            'std_nisn'               => 'required|numeric',
+        ]);
 
-    $createStudent = Student::create([
-        'std_user_id'            => auth()->id(), // otomatis dari login
-        'std_nik'                => $request->std_nik,
-        'std_gender'             => $request->std_gender,
-        'std_birth_place'        => $request->std_birth_place,
-        'std_birth_date'         => $request->std_birth_date,
-        'std_child_to'           => $request->std_child_to,
-        'std_number_of_siblings' => $request->std_number_of_siblings,
-        'std_address'            => $request->std_address,
-        'std_date_registration'  => now()->toDateString(),
-        'std_school'             => $request->std_school,
-        'std_formal_level'       => $request->std_formal_level,
-        'std_formal_grade'       => $request->std_formal_grade,
-        // 'std_parent_id'          => $request->prt_id,
-        'std_nisn'               => $request->std_nisn,
-    ]);
+        Student::create([
+            'std_user_id'            => auth()->id(),
+            'std_nik'                => $request->std_nik,
+            'std_gender'             => $request->std_gender,
+            'std_birth_place'        => $request->std_birth_place,
+            'std_birth_date'         => $request->std_birth_date,
+            'std_child_to'           => $request->std_child_to,
+            'std_number_of_siblings' => $request->std_number_of_siblings,
+            'std_address'            => $request->std_address,
+            'std_date_registration'  => now()->toDateString(),
+            'std_school'             => $request->std_school,
+            'std_formal_level'       => $request->std_formal_level,
+            'std_formal_grade'       => $request->std_formal_grade,
+            'std_nisn'               => $request->std_nisn,
+        ]);
 
         Alert::success('Berhasil Menambahkan', 'Data Berhasil Ditambahkan');
         return redirect('/student/Ppdb_Student/create_parent');
@@ -70,10 +68,8 @@ class PpdbStudentController extends Controller
 
     public function store_parent(Request $request)
     {
-        //  dd(auth()->user());
-        $createPpdb_Parent = Ppdb_Parent::create([
-            'prt_user_id'            => auth()->user()->usr_id, // ← SOLUSI
-            // 'prt_user_id'            => auth()->id(), // otomatis dari login
+        Ppdb_Parent::create([
+            'prt_user_id'            => auth()->user()->usr_id,
             'prt_father'            => $request->prt_father,
             'prt_status_father'     => $request->prt_status_father,
             'prt_address_father'    => $request->prt_address_father,
@@ -91,27 +87,58 @@ class PpdbStudentController extends Controller
             'prt_parent_phone'      => $request->prt_parent_phone,
         ]);
 
-        Alert::success('Berhasil Menambahkan', 'Data Berhasil Ditambahkan');
-        return redirect('/staff/Ppdb_Parent');
+        Alert::success('Pendaftaran Berhasil', 'Berhasil Melakukan Pendaftaran');
+        // return redirect()->route('student.Ppdb_Student.confirmation');
+
+        $student = Student::where('std_user_id', auth()->id())->first();
+        if ($student) {
+            return redirect()->route('student.uploadForm', ['id' => $student->std_id]);
+            } else {
+                return redirect()->route('student.Ppdb_Student.confirmation')->with('error', 'Data siswa tidak ditemukan.');
+            }
     }
 
-    public function show(Student $student)
+
+    public function confirmation()
     {
-        //
+        return view('student.Ppdb_Student.confirmation');
     }
 
-    public function edit(Student $student)
+    // FORM UPLOAD
+    public function uploadForm($id)
     {
-        //
+        $student = Student::findOrFail($id);
+        return view('student.ppdb_student.upload', compact('student'));
     }
 
-    public function update(Request $request, Student $student)
+    // UPLOAD KK
+    public function uploadKK(Request $request, $id)
     {
-        //
-    }
+        $student = Student::findOrFail($id);
 
-    public function destroy(Student $student)
-    {
-        //
+        $request->validate([
+            'std_kk_photo' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+        ]);
+
+        if ($request->hasFile('std_kk_photo')) {
+            // Hapus file lama jika ada
+            if ($student->std_kk_photo && Storage::exists($student->std_kk_photo)) {
+                Storage::delete($student->std_kk_photo);
+            }
+
+            // Simpan file baru
+            $path = $request->file('std_kk_photo')->store('kk', 'public');
+
+            // Update path di database
+            $student->std_kk_photo = $path;
+            $student->save();
+
+            // Alert::success('Berhasil Upload Kartu Keluarga', 'Kartu Keluarga Berhasil Diupload');
+            // return redirect('/student/Ppdb_Student/upload/{id}');
+            // return redirect()->back()->with('success', 'Berkas KK berhasil diupload.');
+            return redirect('/student/Ppdb_Student/confirmation')->with('success');
+        }
+
+        return redirect()->back()->with('error', 'Berkas KK gagal diupload.');
     }
 }

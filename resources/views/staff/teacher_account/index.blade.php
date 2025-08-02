@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Daftar Guru
+    Daftar Guru | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -39,7 +39,7 @@
                                     <td>
                                         {{-- Tambahkan aksi jika diperlukan --}}
                                         <a href="/staff/teacher_account/{{$user->usr_id}}/detail" class="btn btn-primary">Detail</a>
-                                        <a href="/staff/teacher_account/{{$user->usr_id}}/edit" class="btn btn-primary">Edit</a>
+                                        {{-- <a href="/staff/teacher_account/{{$user->usr_id}}/edit" class="btn btn-primary">Edit</a> --}}
                                         <a href="/staff/teacher_account/{{$user->usr_id}}/destroy" class="btn btn-danger" data-confirm-delete="true">Delete</a>
                                     </td>
                                 </tr>

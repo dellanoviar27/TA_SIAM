@@ -21,7 +21,7 @@ class ClassStudent extends Model
         'cst_class_id',
         'cst_semester_id',
         'cst_student_id',
-        'cst_teacher_id',
+        // 'cst_teacher_id',
     ];
 
     public function class()

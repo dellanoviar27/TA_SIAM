@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Edit Staf
+    Edit Staf | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -23,7 +23,7 @@
                  <div class="mb-4 row align-items-center">
                 <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Nama</label>
                 <div class="col-sm-9">
-                  <input type="text" name="name" class="form-control" value="{{ old('name') }}" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Nama Wajib Diisi')" 
+                  <input type="text" name="name" class="form-control" value="{{ old('name', $user->name) }}" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Nama Wajib Diisi')" 
                   onchange="this.setCustomValidity('')">
                 </div>
                 @error('name')
@@ -65,6 +65,7 @@
                   <div class="col-sm-3"></div>
                   <div class="col-sm-9">
                     <input type="submit" class="btn btn-primary" value="Kirim" id="">
+                    <input type="button" class="btn btn-danger" value="Batal" onclick="history.back();">
                   </div>
                 </div>
               </div>

@@ -18,29 +18,41 @@ return new class extends Migration
             $table->unsignedBigInteger('grd_semester_id');
             $table->unsignedBigInteger('grd_subject_id');
             $table->unsignedBigInteger('grd_teacher_id');
-            $table->string('grd_katabah');
-            $table->string('grd_kaifiyat');
-            $table->string('grd_adab');
-            $table->string('grd_predicate');
-            $table->string('grd_sick');
-            $table->string('grd_permission');
-            $table->string('grd_absence');
-            $table->unsignedBigInteger('grd_created_by')->unsigned()->nullable();
-            $table->unsignedBigInteger('grd_deleted_by')->unsigned()->nullable();
-            $table->unsignedBigInteger('grd_updated_by')->unsigned()->nullable();
-      
+
+            // Nilai
+            $table->float('grd_knowledge')->nullable();
+            $table->float('grd_practice')->nullable();
+            $table->float('grd_attitude')->nullable();
+            $table->float('grd_average')->nullable();
+            $table->string('grd_predicate')->nullable();
+            $table->boolean('grd_passed')->nullable();
+
+            // Kehadiran
+            $table->integer('grd_sick')->nullable();        // Sakit
+            $table->integer('grd_permission')->nullable();  // Izin
+            $table->integer('grd_absence')->nullable();     // Tanpa keterangan
+
+            // Audit Trail
+            $table->unsignedBigInteger('grd_created_by')->nullable();
+            $table->unsignedBigInteger('grd_updated_by')->nullable();
+            $table->unsignedBigInteger('grd_deleted_by')->nullable();
+
             $table->softDeletes();
-            $table->renameColumn('deleted_at', 'grd_deleted_at');
+            $table->renameColumn('deleted_at', 'grd_deleted_at')->nullable();
             $table->string('grd_sys_note')->nullable();
 
-            $table->foreign('grd_created_by')->references('usr_id')->on('users')->onDelete('cascade');
-            $table->foreign('grd_updated_by')->references('usr_id')->on('users')->onDelete('cascade');
-            $table->foreign('grd_deleted_by')->references('usr_id')->on('users')->onDelete('cascade');
+            $table->timestamps();
+
+            // Foreign Keys
             $table->foreign('grd_student_id')->references('std_id')->on('students')->onDelete('cascade');
             $table->foreign('grd_class_id')->references('cls_id')->on('classes')->onDelete('cascade');
             $table->foreign('grd_semester_id')->references('smt_id')->on('semesters')->onDelete('cascade');
             $table->foreign('grd_subject_id')->references('sbj_id')->on('subjects')->onDelete('cascade');
             $table->foreign('grd_teacher_id')->references('tch_id')->on('teachers')->onDelete('cascade');
+
+            $table->foreign('grd_created_by')->references('usr_id')->on('users')->onDelete('set null');
+            $table->foreign('grd_updated_by')->references('usr_id')->on('users')->onDelete('set null');
+            $table->foreign('grd_deleted_by')->references('usr_id')->on('users')->onDelete('set null');
         });
     }
 

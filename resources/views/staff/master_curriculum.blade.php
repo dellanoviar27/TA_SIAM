@@ -2,25 +2,25 @@
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Purple_Theme" data-layout="vertical">
 
 <!-- head -->
-@include('madrasah_head.head')
+@include('staff.head')
 <!-- endhead -->
 
 <body>
-
+  
   <div id="main-wrapper">
     <!-- Sidebar Start -->
-    @include('madrasah_head.sidebar')
+    @include('staff.sidebar_curriculum')
     <!--  Sidebar End -->
     <div class="page-wrapper">
       <!--  Header Start -->
-     @include('madrasah_head.navbar')
+     @include('staff.navbar')
       <!--  Header End -->
 
       <aside class="left-sidebar with-horizontal">
         <!-- Sidebar scroll-->
         <div>
           <!-- Sidebar navigation-->
-         @include('madrasah_head.sidenav')
+         @include('staff.sidenav')
           <!-- End Sidebar navigation -->
         </div>
         <!-- End Sidebar scroll-->
@@ -187,7 +187,7 @@
   @include('sweetalert::alert')
 
 
-  @include('madrasah_head.script')
+  @include('staff.script')
   
   {{-- endscript --}}
 </body>

@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Verifikasi Pendaftaran Siswa Baru
+    Verifikasi Pendaftaran Siswa Baru | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -41,8 +41,9 @@
                                     <td>{{ ucfirst($student->std_status) }}</td>
                                     
                                     <td>
-                                        <a href="{{ route('approve_student.verifikasi', $student->std_id) }}" class="btn btn-warning btn-sm">Verifikasi</a>
                                         <a href="/staff/student/{{$student->std_id}}/detail" class="btn btn-info btn-sm">Detail</a>
+                                        {{-- <a href="/staff/student/{{$student->std_id}}/edit" class="btn btn-info btn-sm">Edit</a> --}}
+                                        <a href="{{ route('approve_student.verifikasi', $student->std_id) }}" class="btn btn-warning btn-sm">Verifikasi</a>
                                         <form action="{{ route('approve_student.destroy', $student->std_id) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')

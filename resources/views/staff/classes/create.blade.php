@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Tambah Kelas
+    Tambah Kelas | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -38,7 +38,7 @@
                 <div class="mb-4 row align-items-center">
                   <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Nomor Kelas</label>
                   <div class="col-sm-9">
-                    <input type="text" name="cls_number" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Nomor Kelas Wajib Diisi')" 
+                    <input type="text" name="cls_number" class="form-control" id="exampleInputText2" placeholder="Masukkan Nomor Kelas" required oninvalid="this.setCustomValidity('Nomor Kelas Wajib Diisi')" 
                     onchange="this.setCustomValidity('')">
                   </div>
                   @error('cls_number')
@@ -49,7 +49,7 @@
                 <div class="mb-4 row align-items-center">
                   <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Kelas Umum</label>
                   <div class="col-sm-9">
-                    <input type="text" name="cls_general_level" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Kelas Umum Wajib Diisi')" 
+                    <input type="text" name="cls_general_level" class="form-control" id="exampleInputText2" placeholder="Masukan Kelas Umum" required oninvalid="this.setCustomValidity('Kelas Umum Wajib Diisi')" 
                     onchange="this.setCustomValidity('')">
                   </div>
                   @error('cls_general_level')
@@ -60,7 +60,8 @@
                 <div class="row">
                   <div class="col-sm-3"></div>
                   <div class="col-sm-9">
-                    <input type="submit" class="btn btn-primary" value="Kirim" id="">
+                    <input type="submit" class="btn btn-primary me-2" value="Kirim">
+                    <input type="button" class="btn btn-danger" value="Batal" onclick="history.back();">
                   </div>
                 </div>
               </div>

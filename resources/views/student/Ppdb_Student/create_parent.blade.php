@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Data Orangtua Siswa
+    Data Orangtua Siswa | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -80,7 +80,7 @@
                           <option value="POLRI">POLRI</option>
                           <option value="wirausaha">Wirausaha</option>
                           <option value="Buruh">Buruh</option>
-                          <option value="Lain-lain">Tidak Bekerja</option>
+                          <option value="Tidak Bekerja">Tidak Bekerja</option>
                           <option value="Lain-lain">Lain-lain</option>
                       </select>
                     </div>
@@ -218,7 +218,7 @@
                               <option value="POLRI">POLRI</option>
                               <option value="wirausaha">Wirausaha</option>
                               <option value="Buruh">Buruh</option>
-                              <option value="Buruh">Tidak Bekerja</option>
+                              <option value="Tidak Bekerja">Tidak Bekerja</option>
                               <option value="Lain-lain">Lain-lain</option>
                           </select>
                         </div>

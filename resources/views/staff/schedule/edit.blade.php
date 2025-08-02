@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Edit Jadwal Pelajaran
+    Edit Jadwal Pelajaran | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -96,9 +96,9 @@
                 <label for="Select" class="form-label col-sm-3 col-form-label">Guru</label>
                 <div class="col-sm-9">
                 <select id="Select" name="tch_id" class="form-control" required>
-                <option   value="{{$editSchedule->teacher->tch_id}}">{{$editSchedule->teacher->tch_name}}</option>
+                <option   value="{{$editSchedule->teacher->tch_id}}">{{$editSchedule->teacher->user->name ?? '-' }}</option>
                 @foreach ($teacher as  $teacher)
-                  <option value="{{$teacher->tch_id}}">{{$teacher->tch_name}}</option>
+                  <option value="{{$teacher->tch_id}}">{{ $teacher->user->name ?? '-' }}</option>
                 @endforeach
                 </select>
                 @error('sch_teacher_id')
@@ -132,22 +132,37 @@
                  <div class="mb-4 row align-items-center">
               <label for="Select" class="form-label col-sm-3 col-form-label">Semester</label>
               <div class="col-sm-9">
-              <select id="Select" name="tch_id" class="form-control" required>
-              <option   value="{{$editSchedule->semester->smt_id}}">{{$editSchedule->semester->smt_name}}</option>
-              @foreach ($semester as $Semester)
-                <option value="{{$Semester->smt_id}}">{{$Semester->smt_name}}|{{$Semester->smt_school_year}}</option>
-              @endforeach
+             <select name="smt_id" class="form-control" required>
+                  @foreach ($semester as $Semester)
+                      <option value="{{ $Semester->smt_id }}"
+                          {{ $Semester->smt_id == $editSchedule->sch_semester_id ? 'selected' : '' }}>
+                          {{ $Semester->smt_semester }}
+                      </option>
+                  @endforeach
               </select>
               @error('sch_semester_id')
                   <div id="sch_id" class="form-text">{{ $message }}</div>
               @enderror
               </div>
           </div>
+
+          {{-- Checkbox Tampilkan --}}
+              <div class="mb-4 row align-items-center">
+                <label for="sch_is_visible" class="form-label col-sm-3 col-form-label">Tampilkan?</label>
+                <div class="col-sm-9">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="sch_is_visible" name="sch_is_visible" value="1"
+                      {{ $editSchedule->sch_is_visible ? 'checked' : '' }}>
+                    <label class="form-check-label" for="sch_is_visible">Tampilkan ke Guru dan Siswa</label>
+                  </div>
+                </div>
+              </div>
                 
                 <div class="row">
                   <div class="col-sm-3"></div>
                   <div class="col-sm-9">
-                    <input type="submit" class="btn btn-primary" value="Kirim" id="">
+                    <input type="submit" class="btn btn-primary me-2" value="Kirim">
+                    <input type="button" class="btn btn-danger" value="Batal" onclick="history.back();">
                   </div>
                 </div>
               </div>

@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Edit Data Siswa
+    Edit Data Siswa | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -32,10 +32,21 @@
                 <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Nama Lengkap</label>
                     <div class="col-sm-9">
-                      <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="exampleInputText1" placeholder="" required oninvalid="this.setCustomValidity('Nama Wajib Diisi')" 
+                      <input type="text" name="name" value="{{ $student->user->name ?? '-' }}" class="form-control" id="exampleInputText1" placeholder="" required oninvalid="this.setCustomValidity('Nama Wajib Diisi')" 
                       onchange="this.setCustomValidity('')">
                     </div>
                     @error('name')
+                      <div>error</div>
+                    @enderror
+                  </div>
+
+                   <div class="mb-4 row align-items-center">
+                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-9">
+                      <input type="email" name="email" value="{{ $student->user->email ?? '-' }}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Email Wajib Diisi')" 
+                      onchange="this.setCustomValidity('')">
+                    </div>
+                    @error('email')
                       <div>error</div>
                     @enderror
                   </div>
@@ -45,7 +56,7 @@
                   <div class="col-sm-9">
                     <select class ="form-select mr-sm-2" id="inLineFormCustomSelect" name="std_gender"  oninvalid="this.setCustomValidity ('Jenis Kelamin Wajib Diisi')"
                     onchange="this.setCustomValidity('')" required>
-                    @if ($teacher->tch_gender == "Perempuan")
+                    @if ($student->std_gender == "Perempuan")
                     <option value="Perempuan">Perempuan</option>
                     <option value="Laki-laki">Laki-laki</option>
                     @else
@@ -115,109 +126,67 @@
                   </div>
 
                     <div class="mb-4 row align-items-center">
-                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Alamat</label>
+                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Asal Sekolah</label>
                     <div class="col-sm-9">
-                      <input type="text" name="std_address" value="{{ $student->std_address }}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Alamat Wajib Diisi')" 
+                      <input type="text" name="std_school" value="{{ $student->std_school }}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Asal Sekolah Wajib Diisi')" 
                       onchange="this.setCustomValidity('')">
                     </div>
-                    @error('std_address')
+                    @error('std_school')
                       <div>error</div>
                     @enderror
                   </div>
 
-                  <div class="mb-4 row align-items-center">
-                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Alamat</label>
+                 <div class="mb-4 row align-items-center">
+                    <label for="formalLevel" class="form-label col-sm-3 col-form-label">Tingkatan Sekolah</label>
                     <div class="col-sm-9">
-                      <input type="text" name="std_address" value="{{ $student->std_address }}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Alamat Wajib Diisi')" 
-                      onchange="this.setCustomValidity('')">
+                      <select name="std_formal_level" value="{{ $student->std_formal_level }}" id="formalLevel" class="form-control" required 
+                        oninvalid="this.setCustomValidity('Tingkatan Sekolah Wajib Diisi')" 
+                        onchange="handleFormalLevelChange(); this.setCustomValidity('')">
+                        <option hidden value="">Pilih Tingkatan</option>
+                        <option value="Belum Sekolah">Belum Sekolah</option>
+                        <option value="TK">TK</option>
+                        <option value="SD">SD</option>
+                        <option value="SMP">SMP</option>
+                        <option value="SMA">SMA</option>
+                        <option value="Lulus SMA">Lulus SMA</option>
+                        <option value="Kuliah">Kuliah</option>
+                      </select>
                     </div>
-                    @error('std_address')
-                      <div>error</div>
+                    @error('std_formal_level')
+                      <div class="form-text text-danger">{{ $message }}</div>
                     @enderror
                   </div>
 
-
-                  <div class="mb-4 row align-items-center">
-                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Telpon</label>
+                  <div class="mb-4 row align-items-center" id="formalGradeWrapper">
+                    <label for="formalGrade" class="form-label col-sm-3 col-form-label">Kelas Sekolah</label>
                     <div class="col-sm-9">
-                      <input type="tel" name="tch_phone" value="{{$teacher->tch_phone}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Telpon Wajib Diisi')" 
-                      onchange="this.setCustomValidity('')">
+                      <select name="std_formal_grade" value="{{ $student->std_formal_grade }}" class="form-control">
+                        <option hidden value="">Pilih Kelas</option>
+                        @for ($i = 1; $i <= 12; $i++)
+                          <option value="{{ $i }}">{{ $i }}</option>
+                        @endfor
+                      </select>
                     </div>
-                    @error('tch_phone')
-                      <div>error</div>
+                    @error('std_formal_grade')
+                      <div class="form-text text-danger">{{ $message }}</div>
                     @enderror
                   </div>
 
-                  <div class="mb-4 row align-items-center">
-                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Email</label>
-                    <div class="col-sm-9">
-                      <input type="email" name="tch_email" value="{{$teacher->tch_email}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Email Wajib Diisi')" 
-                      onchange="this.setCustomValidity('')">
-                    </div>
-                    @error('tch_email')
-                      <div>error</div>
-                    @enderror
+                <div class="mb-4 row align-items-center">
+                  <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">NISN</label>
+                  <div class="col-sm-9">
+                    <input type="number" name="std_nisn" value="{{ $student->std_nisn }}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('NISN Wajib Diisi')" 
+                    onchange="this.setCustomValidity('')">
                   </div>
-
-                  <div class="mb-4 row align-items-center">
-                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Pendidikan Terakhir</label>
-                    <div class="col-sm-9">
-                      <input type="text" name="tch_last_education" value="{{$teacher->tch_last_education}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Pendidikan Terakhir Wajib Diisi')" 
-                      onchange="this.setCustomValidity('')">
-                    </div>
-                    @error('tch_last_education')
-                      <div>error</div>
-                    @enderror
-                  </div>
-
-                  <div class="mb-4 row align-items-center">
-                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Pendidikan Saat Ini</label>
-                    <div class="col-sm-9">
-                      <input type="text" name="tch_current_education" value="{{$teacher->tch_current_education}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Pendidikan Saat Ini Wajib Diisi')" 
-                      onchange="this.setCustomValidity('')">
-                    </div>
-                    @error('tch_current_education')
-                      <div>error</div>
-                    @enderror
-                  </div>
-
-                  <div class="mb-4 row align-items-center">
-                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Nama Institusi Pendidikan</label>
-                    <div class="col-sm-9">
-                      <input type="text" name="tch_name_institution" value="{{$teacher->tch_name_institution}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Nama Institusi Pendidikan Wajib Diisi')" 
-                      onchange="this.setCustomValidity('')">
-                    </div>
-                    @error('tch_name_institution')
-                      <div>error</div>
-                    @enderror
-                  </div>
-
-                  <div class="mb-4 row align-items-center">
-                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Tugas Tambahan</label>
-                    <div class="col-sm-9">
-                      <input type="text" name="tch_additional_task" value="{{$teacher->tch_additional_task}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Tugas Tambahan Pendidikan Wajib Diisi')" 
-                      onchange="this.setCustomValidity('')">
-                    </div>
-                    @error('tch_additional_task')
-                      <div>error</div>
-                    @enderror
-                  </div>
-
-                  <div class="mb-4 row align-items-center">
-                    <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Tugas Tambahan</label>
-                    <div class="col-sm-9">
-                      <input type="file" name="tch_pictures" value="{{$teacher->tch_pictures}}" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Foto Diri Wajib Diisi')" 
-                      onchange="this.setCustomValidity('')">
-                    </div>
-                    @error('tch_pictures')
-                      <div>error</div>
-                    @enderror
-                  </div>
+                  @error('std_nisn')
+                    <div>error</div>
+                  @enderror
+                </div>
 
                 <div class="row">
                   <div class="col-sm-3"></div>
                   <div class="col-sm-9">
-                    <input type="submit" class="btn btn-primary" value="Kirim" id="">
+                    <input type="submit" class="btn btn-primary" value="Submit" id="">
                   </div>
                 </div>
               </div>
@@ -226,10 +195,28 @@
         </div>
       </div>
    </div>
+
+        @push('script')
+        <script>
+          function handleFormalLevelChange() {
+            const level = document.getElementById('formalLevel').value;
+            const gradeWrapper = document.getElementById('formalGradeWrapper');
+
+            if (level === 'Belum Sekolah' || level === 'TK' || level === 'Lulus SMA' || level === 'Kuliah') {
+              gradeWrapper.style.display = 'none';
+              document.getElementById('formalGrade').value = '';
+            } else {
+              gradeWrapper.style.display = 'flex';
+            }
+          }
+
+          document.addEventListener('DOMContentLoaded', function () {
+            handleFormalLevelChange();
+          });
+        </script>
+        @endpush
     
 @endsection
-
-
 
 @push('script')
     

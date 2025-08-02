@@ -25,4 +25,9 @@ class homeroom_teacher extends Model
     {
         return $this->belongsTo(Teacher::class, 'hrt_teacher_id', 'tch_id');
     }
+
+    public function semester()
+    {
+        return $this->belongsTo(semester::class, 'hrt_semester_id', 'smt_id');
+    }
 }

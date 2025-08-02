@@ -13,7 +13,7 @@
   <!-- Core Css -->
   <link rel="stylesheet" href="../assets/css/styles.css" />
 
-  <title>SIAM Al-Mu'min | Login</title>
+  <title>Login | SIAM Al-Mu'min</title>
 </head>
 
 <body>

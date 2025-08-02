@@ -6,7 +6,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Pembagian Kelas
+    Pembagian Kelas | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -28,8 +28,7 @@
                             <option value="">Pilih Tahun Ajaran</option>
                             @foreach($semesters as $smt)
                                 <option value="{{ $smt->smt_id }}" {{ $selectedSemester == $smt->smt_id ? 'selected' : '' }}>
-                                    {{-- {{ $smt->smt_semester }}  --}}
-                                    {{ $smt->smt_school_year }}
+                                    {{ $smt->smt_school_year }} |   {{ $smt->smt_semester }} 
                                 </option>
                             @endforeach
                         </select>

@@ -5,7 +5,7 @@
 @endpush
 
 @section('title')
-    SIAM Al-Mu'min | Tambah Mata Pelajaran
+    Tambah Mata Pelajaran | SIAM Al-Mu'min
 @endsection
 
 @section('content')
@@ -22,7 +22,7 @@
                 <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Kode Mata Pelajaran</label>
                     <div class="col-sm-9">
-                      <input type="text" name="sbj_code" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Kode Wajib Diisi')" 
+                      <input type="text" name="sbj_code" class="form-control" id="exampleInputText2" placeholder="Masukkan Kode Mata Pelajaran" required oninvalid="this.setCustomValidity('Kode Wajib Diisi')" 
                       onchange="this.setCustomValidity('')">
                     </div>
                     @error('sbj_code')
@@ -33,7 +33,7 @@
                   <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">Nama Mata Pelajaran</label>
                     <div class="col-sm-9">
-                      <input type="text" name="sbj_name" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('Mata Pelajaran Wajib Diisi')" 
+                      <input type="text" name="sbj_name" class="form-control" id="exampleInputText2" placeholder="Masukkan Nama Mata Pelajaran" required oninvalid="this.setCustomValidity('Mata Pelajaran Wajib Diisi')" 
                       onchange="this.setCustomValidity('')">
                     </div>
                     @error('sbj_name')
@@ -44,7 +44,7 @@
                   <div class="mb-4 row align-items-center">
                     <label for="exampleInputText2" class="form-label col-sm-3 col-form-label">KKM</label>
                     <div class="col-sm-9">
-                      <input type="text" name="sbj_kkm" class="form-control" id="exampleInputText2" placeholder="" required oninvalid="this.setCustomValidity('KKM  Wajib Diisi')" 
+                      <input type="text" name="sbj_kkm" class="form-control" id="exampleInputText2" placeholder="Masukkan KKM Nilai Mata Pelajaran" required oninvalid="this.setCustomValidity('KKM  Wajib Diisi')" 
                       onchange="this.setCustomValidity('')">
                     </div>
                     @error('sbj_kkm')
@@ -70,7 +70,8 @@
                 <div class="row">
                   <div class="col-sm-3"></div>
                   <div class="col-sm-9">
-                    <input type="submit" class="btn btn-primary" value="Kirim" id="">
+                    <input type="submit" class="btn btn-primary me-2" value="Kirim">
+                    <input type="button" class="btn btn-danger" value="Batal" onclick="history.back();">
                   </div>
                 </div>
               </div>

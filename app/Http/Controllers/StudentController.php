@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\Classes;
 use App\Models\User;
+use App\Models\student\Ppdb_Parent;
 use Illuminate\Http\Request;
 use Alert;
 
@@ -12,7 +13,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $student = Student::with(['classes', 'user'])->where('std_status', 'diterima')->get();
+        $student = Student::with(['classes', 'user'])->where('std_status', 'verified')->get();
         confirmDelete('Hapus Siswa!', 'Siswa Tidak Bisa Kembali Jika Dihapus');
         return view('staff.student.index', compact('student'));
     }
@@ -59,11 +60,28 @@ class StudentController extends Controller
         //
     }
 
+    // public function edit($id)
+    // {
+    //     $editStudent = Student::findOrFail($id);
+    //     $classes = Classes::all();
+    //     return view('staff.student.edit', compact('editStudent', 'classes'));
+    // }
+
     public function edit($id)
     {
-        $editStudent = Student::findOrFail($id);
-        $classes = Classes::all();
-        return view('staff.student.edit', compact('editStudent', 'classes'));
+        // $user = auth()->user();
+        $student = Student::findOrFail($id);
+        return view('staff.student.edit', compact('student', 'user'));
+       
+        // return view('student.Ppdb_Student.edit_parent', compact('user'));
+    }
+    
+    public function edit_parent($id)
+    {
+        // $user = auth()->user();
+        $Ppdb_Parent = Ppdb_Parent::findOrFail($id);
+        return view('staff.student.edit_parent', compact('Ppdb_Parent', 'user'));
+        // return view('student.ppdb_student.edit_parent', compact('user'));
     }
 
     public function update(Request $request, $id)

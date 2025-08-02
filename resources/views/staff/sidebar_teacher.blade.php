@@ -25,17 +25,27 @@
             <!-- Dashboard -->
             <!-- ---------------------------------- -->
             <li class="sidebar-item">
-              <a class="sidebar-link" href="" id="get-url" aria-expanded="false">
+              <a class="sidebar-link" href="/teacher/dashboard" aria-expanded="false">
                 <span>
                   <i class="ti ti-aperture"></i>
                 </span>
                 <span class="hide-menu">Dashboard</span>
               </a>
             </li>
+            <!-- ---------------------------------- -->
+            <!-- AKADEMIK -->
+            <!-- ---------------------------------- -->
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">AKADEMIK</span>
+            </li>
+            <!-- ---------------------------------- -->
+            <!-- AKADEMIK -->
+            <!-- ---------------------------------- -->
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./main/index2.html" aria-expanded="false">
+              <a class="sidebar-link" href="/teacher/schedule" aria-expanded="false">
                 <span>
-                  <i class="ti ti-shopping-cart"></i>
+                  <i class="ti ti-calendar"></i>
                 </span>
                 <span class="hide-menu">Jadwal</span>
               </a>
@@ -43,15 +53,23 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="/teacher/grade" aria-expanded="false">
                 <span>
-                  <i class="ti ti-currency-dollar"></i>
+                  <i class="ti ti-clipboard-check"></i>
                 </span>
                 <span class="hide-menu">Nilai</span>
               </a>
             </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./main/index4.html" aria-expanded="false">
+              <li class="sidebar-item">
+              <a class="sidebar-link" href="/teacher/attendance" aria-expanded="false">
                 <span>
-                  <i class="ti ti-cpu"></i>
+                  <i class="ti ti-clipboard-check"></i>
+                </span>
+                <span class="hide-menu">Rekap Kehadiran</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/teacher/reports" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-text"></i>
                 </span>
                 <span class="hide-menu">Rapor</span>
               </a>
